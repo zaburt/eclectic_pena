@@ -1,0 +1,69 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - test/**/*
+
+Encoding:
+  Enabled: false
+
+LineLength:
+  Max: 121
+
+HashSyntax:
+  Enabled: false
+
+TrailingBlankLines:
+  Enabled: false
+
+EmptyLinesAroundBody:
+  Enabled: false
+
+EmptyLines:
+  Enabled: false
+
+SpaceBeforeBlockBraces:
+  Enabled: false
+
+SpaceInsideBlockBraces:
+  Enabled: false
+
+SpaceInsideHashLiteralBraces:
+  Enabled: false
+
+WordArray:
+  Enabled: false
+
+NumericLiterals:
+  Enabled: false
+
+BlockNesting:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+

@@ -1,0 +1,32 @@
+#
+# systemd unit for eclectic_pena service
+#
+# setup rvm as eclectic_pena app user to create a wrapper for unicorn
+#   rvm wrapper 2.3.0@eclectic_pena eclectic_pena unicorn
+#
+# put this file as /etc/systemd/system/eclectic_pena.service
+#   systemctl start eclectic_pena
+#   systemctl enable eclectic_pena
+
+
+[Unit]
+Description=Eclectic Pena Server
+Wants=postgresql-9.5.service
+After=postgresql-9.5.service
+
+[Service]
+Type=simple
+User=eclectic_pena
+SyslogIdentifier=eclectic_pena
+PIDFile=/path_to_eclectic_pena/tmp/pids/unicorn.pid
+Environment=RAILS_ENV=production
+WorkingDirectory=/path_to_eclectic_pena
+# TimeoutSec=30
+# Restart=always
+ExecStart=/path_to_home_of_eclectic_pena/.rvm/bin/eclectic_pena_unicorn -E production -c /path_to_eclectic_pena/config/unicorn.rb
+# ExecReload=/bin/kill -s USR2 $MAINPID
+# ExecStop=/bin/kill -s QUIT $MAINPID
+
+[Install]
+WantedBy=multi-user.target
+

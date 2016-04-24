@@ -1,0 +1,27 @@
+!!!
+%html{:lang => 'en'}
+  %head
+    %meta{:content => 'text/html; charset=UTF-8', 'http-equiv' => 'Content-Type'}
+    %meta{:charset => 'utf-8'}
+    %meta{:content => 'width=device-width, initial-scale=1.0', :name => 'viewport'}
+    %meta{:name => 'description', :content => 'Common knowledge on music and better things in life'}
+    %title
+      = "#{@page_title || t(controller_name)} - Eclectic Pena"
+    /= stylesheet_link_tag    'application', :media => 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', :media => 'all'
+    /= javascript_include_tag 'vendor/modernizr'
+    /= javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    = render 'layouts/header'
+    = render 'layouts/alerts'
+    #main.row.full-min-height
+      - if @fullwidth
+        .small-24.columns.small-centered
+          = yield
+      - else
+        .small-24.large-16.columns.small-centered
+          = yield
+    = render 'layouts/footer'
+
