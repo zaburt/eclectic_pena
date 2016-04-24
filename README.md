@@ -1,5 +1,5 @@
 
-Eclectic Pena Project
+Eclectic Pena
 =================================
 
 Information sharing platform on music and better things in life.
