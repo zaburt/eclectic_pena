@@ -2,6 +2,7 @@
 TODO
 =======================
 
+* update ruby
 * slugs
 * papertrail
 * i18n
