@@ -12,6 +12,7 @@
     /= javascript_include_tag 'vendor/modernizr'
     /= javascript_include_tag 'application', 'data-turbolinks-track' => true
     = javascript_include_tag 'application'
+    /= favicon_link_tag 'schrodingiller_small.png'
     = csrf_meta_tags
   %body
     = render 'layouts/header'
@@ -21,7 +22,9 @@
         .small-24.columns.small-centered
           = yield
       - else
+        %br
         .small-24.large-16.columns.small-centered
           = yield
+        %br
     = render 'layouts/footer'
 

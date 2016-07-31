@@ -2,18 +2,21 @@
   .top-bar
     .top-bar-title
       %span{'data-responsive-toggle' => 'responsive_menu', 'data-hide-for' => 'medium'}
-        %button.menu-icon.dark{:type => 'button', 'data-toggle' => ''}
-      %a{:href => '/'}
+        %button.menu-icon{:type => 'button', 'data-toggle' => ''}
+      /%a{:href => '/'}
+      /  %i.fi-home
+      %span.logo_wrapper
+        / = image_tag 'schrodingiller_small.png'
         %i.fi-home
         %i
           Eclectic Pena
     #responsive_menu
       .top-bar-left
-        %ul.dropdown.menu{'data-dropdown-menu' => ''}
+        %ul.dropdown.menu.vertical.medium-horizontal{'data-dropdown-menu' => ''}
           %li
-            = link_to 'Hebele', '/'
+            = link_to t('home'), root_path
       .top-bar-right
-        %ul.menu
+        %ul.menu.vertical.medium-horizontal
           - if signed_in?
             %li
               = link_to current_user.email, edit_user_registration_path
