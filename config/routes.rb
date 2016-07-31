@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :band_labels
   resources :band_photos
   resources :band_urls
   resources :bands

@@ -1,0 +1,21 @@
+%h1 Listing band_labels
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th
+      %th
+      %th
+
+  %tbody
+    - @band_labels.each do |band_label|
+      %tr
+        %td= band_label.name
+        %td= link_to 'Show', band_label
+        %td= link_to 'Edit', edit_band_label_path(band_label)
+        %td= link_to 'Destroy', band_label, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Band label', new_band_label_path
