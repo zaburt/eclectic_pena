@@ -1,0 +1,13 @@
+= simple_form_for(@band) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :country
+    = f.input :website
+    = f.input :biography
+    = f.input :musician_is_band
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

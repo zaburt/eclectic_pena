@@ -1,0 +1,10 @@
+= simple_form_for(@band_photo) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :band
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

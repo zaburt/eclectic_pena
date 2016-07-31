@@ -1,0 +1,23 @@
+%h1 Listing band_photos
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Band
+      %th
+      %th
+      %th
+
+  %tbody
+    - @band_photos.each do |band_photo|
+      %tr
+        %td= band_photo.name
+        %td= band_photo.band
+        %td= link_to 'Show', band_photo
+        %td= link_to 'Edit', edit_band_photo_path(band_photo)
+        %td= link_to 'Destroy', band_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Band photo', new_band_photo_path

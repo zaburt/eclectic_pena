@@ -1,0 +1,27 @@
+%h1 Listing band_urls
+
+%table
+  %thead
+    %tr
+      %th Url
+      %th Band
+      %th Description
+      %th Date
+      %th
+      %th
+      %th
+
+  %tbody
+    - @band_urls.each do |band_url|
+      %tr
+        %td= band_url.url
+        %td= band_url.band
+        %td= band_url.description
+        %td= band_url.date
+        %td= link_to 'Show', band_url
+        %td= link_to 'Edit', edit_band_url_path(band_url)
+        %td= link_to 'Destroy', band_url, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Band url', new_band_url_path

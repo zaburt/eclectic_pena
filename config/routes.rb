@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :band_photos
+  resources :band_urls
+  resources :bands
   resources :genres
   devise_for :users, :path_names => {
     sign_in: 'login',

@@ -1,0 +1,12 @@
+= simple_form_for(@band_url) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :url
+    = f.association :band
+    = f.input :description
+    = f.input :date
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

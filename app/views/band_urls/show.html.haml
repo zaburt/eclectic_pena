@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Url:
+  = @band_url.url
+%p
+  %b Band:
+  = @band_url.band
+%p
+  %b Description:
+  = @band_url.description
+%p
+  %b Date:
+  = @band_url.date
+
+= link_to 'Edit', edit_band_url_path(@band_url)
+\|
+= link_to 'Back', band_urls_path
