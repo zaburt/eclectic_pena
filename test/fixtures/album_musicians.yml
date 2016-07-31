@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  album_id: 
+  musician_id: 
+  instrument: MyString
+  is_guest: false
+
+two:
+  album_id: 
+  musician_id: 
+  instrument: MyString
+  is_guest: false

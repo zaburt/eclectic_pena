@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :album_musicians
+  resources :album_labels
+  resources :album_covers
+  resources :albums
+  resources :album_types
   resources :band_musicians
   resources :musician_labels
   resources :musician_photos

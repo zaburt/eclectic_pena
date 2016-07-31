@@ -1,0 +1,23 @@
+%h1 Listing album_covers
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Album
+      %th
+      %th
+      %th
+
+  %tbody
+    - @album_covers.each do |album_cover|
+      %tr
+        %td= album_cover.name
+        %td= album_cover.album
+        %td= link_to 'Show', album_cover
+        %td= link_to 'Edit', edit_album_cover_path(album_cover)
+        %td= link_to 'Destroy', album_cover, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Album cover', new_album_cover_path

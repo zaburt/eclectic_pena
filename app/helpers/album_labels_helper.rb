@@ -1,0 +1,2 @@
+module AlbumLabelsHelper
+end

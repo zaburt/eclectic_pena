@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Album:
+  = @album_musician.album
+%p
+  %b Musician:
+  = @album_musician.musician
+%p
+  %b Instrument:
+  = @album_musician.instrument
+%p
+  %b Is guest:
+  = @album_musician.is_guest
+
+= link_to 'Edit', edit_album_musician_path(@album_musician)
+\|
+= link_to 'Back', album_musicians_path

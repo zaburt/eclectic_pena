@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @album_cover.name
+%p
+  %b Album:
+  = @album_cover.album
+
+= link_to 'Edit', edit_album_cover_path(@album_cover)
+\|
+= link_to 'Back', album_covers_path

@@ -1,0 +1,12 @@
+= simple_form_for(@album) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :album_type
+    = f.input :date
+    = f.input :end_date
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

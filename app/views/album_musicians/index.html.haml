@@ -1,0 +1,27 @@
+%h1 Listing album_musicians
+
+%table
+  %thead
+    %tr
+      %th Album
+      %th Musician
+      %th Instrument
+      %th Is guest
+      %th
+      %th
+      %th
+
+  %tbody
+    - @album_musicians.each do |album_musician|
+      %tr
+        %td= album_musician.album
+        %td= album_musician.musician
+        %td= album_musician.instrument
+        %td= album_musician.is_guest
+        %td= link_to 'Show', album_musician
+        %td= link_to 'Edit', edit_album_musician_path(album_musician)
+        %td= link_to 'Destroy', album_musician, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Album musician', new_album_musician_path

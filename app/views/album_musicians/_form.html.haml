@@ -1,0 +1,12 @@
+= simple_form_for(@album_musician) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :album
+    = f.association :musician
+    = f.input :instrument
+    = f.input :is_guest
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+
