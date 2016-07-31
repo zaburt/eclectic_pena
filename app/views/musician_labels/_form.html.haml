@@ -1,0 +1,9 @@
+= simple_form_for(@musician_label) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

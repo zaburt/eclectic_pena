@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Band:
+  = @band_musician.band
+%p
+  %b Musician:
+  = @band_musician.musician
+%p
+  %b Since:
+  = @band_musician.since
+%p
+  %b Until:
+  = @band_musician.until
+%p
+  %b Current:
+  = @band_musician.current
+
+= link_to 'Edit', edit_band_musician_path(@band_musician)
+\|
+= link_to 'Back', band_musicians_path

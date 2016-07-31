@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @musician_photo.name
+%p
+  %b Musician:
+  = @musician_photo.musician
+
+= link_to 'Edit', edit_musician_photo_path(@musician_photo)
+\|
+= link_to 'Back', musician_photos_path

@@ -1,0 +1,23 @@
+%h1 Listing musician_photos
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Musician
+      %th
+      %th
+      %th
+
+  %tbody
+    - @musician_photos.each do |musician_photo|
+      %tr
+        %td= musician_photo.name
+        %td= musician_photo.musician
+        %td= link_to 'Show', musician_photo
+        %td= link_to 'Edit', edit_musician_photo_path(musician_photo)
+        %td= link_to 'Destroy', musician_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Musician photo', new_musician_photo_path

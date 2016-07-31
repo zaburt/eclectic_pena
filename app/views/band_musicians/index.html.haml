@@ -1,0 +1,29 @@
+%h1 Listing band_musicians
+
+%table
+  %thead
+    %tr
+      %th Band
+      %th Musician
+      %th Since
+      %th Until
+      %th Current
+      %th
+      %th
+      %th
+
+  %tbody
+    - @band_musicians.each do |band_musician|
+      %tr
+        %td= band_musician.band
+        %td= band_musician.musician
+        %td= band_musician.since
+        %td= band_musician.until
+        %td= band_musician.current
+        %td= link_to 'Show', band_musician
+        %td= link_to 'Edit', edit_band_musician_path(band_musician)
+        %td= link_to 'Destroy', band_musician, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Band musician', new_band_musician_path

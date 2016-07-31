@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @musician.name
+%p
+  %b Birthdate:
+  = @musician.birthdate
+%p
+  %b Country:
+  = @musician.country
+%p
+  %b Biography:
+  = @musician.biography
+
+= link_to 'Edit', edit_musician_path(@musician)
+\|
+= link_to 'Back', musicians_path

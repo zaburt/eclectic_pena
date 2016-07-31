@@ -1,0 +1,27 @@
+%h1 Listing musicians
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Birthdate
+      %th Country
+      %th Biography
+      %th
+      %th
+      %th
+
+  %tbody
+    - @musicians.each do |musician|
+      %tr
+        %td= musician.name
+        %td= musician.birthdate
+        %td= musician.country
+        %td= musician.biography
+        %td= link_to 'Show', musician
+        %td= link_to 'Edit', edit_musician_path(musician)
+        %td= link_to 'Destroy', musician, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Musician', new_musician_path
