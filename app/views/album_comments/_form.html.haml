@@ -1,0 +1,12 @@
+= simple_form_for(@album_comment) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.association :album
+    = f.association :user
+    = f.input :publish
+    = f.input :comment
+
+  .form-actions.float-right
+    = f.button :submit, :class => 'button'
+

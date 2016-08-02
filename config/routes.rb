@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :album_comments
   resources :album_tracks
   resources :album_musicians
   resources :album_labels
