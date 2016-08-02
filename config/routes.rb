@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  devise_for :users, :path_names => {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'register'
+  }
+
+  root :to => 'home#index'
+
+  scope :path => '/home', :controller => :home, :as => :home do
+    get :index
+  end
+
   resources :album_comments
   resources :album_tracks
   resources :album_musicians
@@ -15,17 +28,6 @@ Rails.application.routes.draw do
   resources :band_urls
   resources :bands
   resources :genres
-  devise_for :users, :path_names => {
-    sign_in: 'login',
-    sign_out: 'logout',
-    sign_up: 'register'
-  }
-
-  root :to => 'home#index'
-
-  scope :path => '/home', :controller => :home, :as => :home do
-    get :index
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -82,3 +84,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+
