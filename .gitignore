@@ -60,6 +60,8 @@ bower.json
 
 # seeds
 /db/seeds/*.json
+/db/seeds/*.tc
+/db/seeds/*.zip
 
 # secrets
 /.env
