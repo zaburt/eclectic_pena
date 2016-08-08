@@ -17,6 +17,9 @@
   %body
     = render 'layouts/header'
     = render 'layouts/alerts'
+    .row
+      .small-24.columns.small-centered.text-center
+        = image_tag 'nyan.floyd.transparent', :style => 'max-height: 200px'
     #main.row.full-min-height
       - if @fullwidth
         .small-24.columns.small-centered
