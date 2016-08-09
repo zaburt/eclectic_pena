@@ -16,16 +16,20 @@ namespace :eclectic_pena do
 
     desc 'import data from tellico'
     task :tellico => :environment do
-      data = nil
+      xml = nil
+      display_parse_results = false
       filepath = Rails.root.join('db', 'seeds', 'tellico.tc')
+      all_artists = []
+      all_genres = []
+      all_albums = {}
 
       Zip::File.open(filepath) do |z|
         entry = z.get_entry('tellico.xml')
         rawdata = entry.get_input_stream.read
-      end
 
-      xml = Nokogiri::XML(rawdata) do |config|
-        config.nonet
+        xml = Nokogiri::XML(rawdata) do |config|
+          config.nonet
+        end
       end
 
       xml.remove_namespaces!
@@ -36,39 +40,102 @@ namespace :eclectic_pena do
         artists = ent.xpath('.//artists/artist').map(&:text)
         year = ent.xpath('./year').text
         comments = ent.xpath('.//comments').text
-        genres = ent.xpath('.//genres/genre').map(&:text)
+
+        genres = ent.xpath('.//genres/genre').map do |k|
+          sanitize_genre(k.text)
+        end
 
         tracks = ent.xpath('.//tracks/track').map do |track|
           track.xpath('./column').map(&:text)
         end
 
-        puts
-        puts "############################# #{id} ###########################"
-        puts " title: #{title}"
-        puts " year: #{year}"
+        all_artists += artists
+        all_genres += genres
+        all_albums[title] = {
+          artists: artists,
+          year: year,
+          genres: genres,
+          comments: comments
+        }
 
-        puts " artists:"
-        artists.each do |artist|
-          puts "   #{artist}"
+        if display_parse_results
+          puts
+          puts "############################# #{id} ###########################"
+          puts " title: #{title}"
+          puts " year: #{year}"
+
+          puts " artists:"
+          artists.each do |artist|
+            puts "   #{artist}"
+          end
+
+          puts " genres:"
+          genres.each do |genre|
+            puts "   #{genre}"
+          end
+
+          puts " comments: #{comments}"
+          puts
+
+          puts " tracks:"
+          tracks.each do |track|
+            pp track
+          end
+
+          puts
+        end
+      end
+
+      all_artists.uniq!.sort!
+      all_genres.uniq!.sort!
+
+      puts "creating #{all_genres.count} genres"
+      all_genres.each do |genre|
+        Genre.create(:name => genre)
+      end
+
+      puts "creating #{all_artists.count} musicians"
+      all_artists.each do |artist|
+        Musician.create(:name => artist)
+      end
+
+      genre_ids = Hash[Genre.pluck(:name, :id)]
+      musician_ids = Hash[Musician.pluck(:name, :id)]
+
+      puts "creating #{all_albums.count} albums"
+      all_albums.each do |title, data|
+        album = Album.create(
+          :name => title,
+          :date => "#{data[:year]}-01-01"
+        )
+
+        data[:genres].each do |genre|
+          AlbumGenre.create(:album_id => album.id, :genre_id => genre_ids[genre]) if genre.present?
         end
 
-        puts " genres:"
-        genres.each do |genre|
-          puts "   #{genre}"
+        data[:artists].each do |artist|
+          AlbumMusician.create(:album_id => album.id, :musician_id => musician_ids[artist]) if artist.present?
         end
-
-        puts " comments: #{comments}"
-        puts
-
-        puts " tracks:"
-        tracks.each do |track|
-          pp track
-        end
-
-        puts
       end
     end
 
+    def sanitize_genre(str)
+      return str if str.blank?
+
+      str.gsub(/Avantgarde/, 'Avant Garde')
+      .gsub(/Bluesrock/, 'Blues Rock')
+      .gsub(/Folkrock/, 'Folk Rock')
+      .gsub(/Hardrock/, 'Hard Rock')
+      .gsub(/ProgRock/, 'Progressive Rock')
+      .gsub(/Prog Rock/, 'Progressive Rock')
+      .gsub(/Psychedelia/, 'Psychedelic')
+      .gsub(/Psychedelic Roc/, 'Psychedelic Rock')
+      .gsub(/Psychrock/, 'Psychedelic Rock')
+      .gsub(/Psych Rock/, 'Psychedelic Rock')
+      .gsub(/Psyche Folk/, 'Psychedelic Folk')
+      .gsub(/Psych-Funk/, 'Psychedelic Funk')
+      .gsub(/[\/-]/, ' ')
+    end
   end
 end
 
