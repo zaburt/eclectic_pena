@@ -6,6 +6,11 @@
 #  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#
+# Indexes
+#
+#  index_album_types_on_slug  (slug) UNIQUE
 #
 
 class AlbumType < ActiveRecord::Base

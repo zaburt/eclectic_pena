@@ -9,6 +9,11 @@
 #  biography  :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
+#
+# Indexes
+#
+#  index_musicians_on_slug  (slug) UNIQUE
 #
 
 class Musician < ActiveRecord::Base

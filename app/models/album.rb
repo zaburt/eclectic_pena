@@ -9,10 +9,12 @@
 #  end_date      :date
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  slug          :string
 #
 # Indexes
 #
 #  index_albums_on_album_type_id  (album_type_id)
+#  index_albums_on_slug           (slug) UNIQUE
 #
 
 class Album < ActiveRecord::Base
