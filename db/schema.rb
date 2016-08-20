@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808201351) do
+ActiveRecord::Schema.define(version: 20160820194240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,16 @@ ActiveRecord::Schema.define(version: 20160808201351) do
   end
 
   add_index "albums", ["album_type_id"], name: "index_albums_on_album_type_id", using: :btree
+
+  create_table "band_albums", force: :cascade do |t|
+    t.integer  "band_id"
+    t.integer  "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "band_albums", ["album_id"], name: "index_band_albums_on_album_id", using: :btree
+  add_index "band_albums", ["band_id"], name: "index_band_albums_on_band_id", using: :btree
 
   create_table "band_band_labels", force: :cascade do |t|
     t.integer  "band_id"
@@ -241,6 +251,8 @@ ActiveRecord::Schema.define(version: 20160808201351) do
   add_foreign_key "album_musicians", "musicians"
   add_foreign_key "album_tracks", "albums"
   add_foreign_key "albums", "album_types"
+  add_foreign_key "band_albums", "albums"
+  add_foreign_key "band_albums", "bands"
   add_foreign_key "band_band_labels", "band_labels"
   add_foreign_key "band_band_labels", "bands"
   add_foreign_key "band_genres", "bands"
