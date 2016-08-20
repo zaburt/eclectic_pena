@@ -94,13 +94,13 @@ namespace :eclectic_pena do
         Genre.create(:name => genre)
       end
 
-      puts "creating #{all_artists.count} musicians"
+      puts "creating #{all_artists.count} bands"
       all_artists.each do |artist|
-        Musician.create(:name => artist)
+        Band.create(:name => artist)
       end
 
       genre_ids = Hash[Genre.pluck(:name, :id)]
-      musician_ids = Hash[Musician.pluck(:name, :id)]
+      band_ids = Hash[Band.pluck(:name, :id)]
 
       puts "creating #{all_albums.count} albums"
       all_albums.each do |title, data|
@@ -114,7 +114,7 @@ namespace :eclectic_pena do
         end
 
         data[:artists].each do |artist|
-          AlbumMusician.create(:album_id => album.id, :musician_id => musician_ids[artist]) if artist.present?
+          BandAlbum.create(:album_id => album.id, :band_id => band_ids[artist]) if artist.present?
         end
       end
     end
