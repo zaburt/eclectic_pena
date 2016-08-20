@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820194240) do
+ActiveRecord::Schema.define(version: 20160820203159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,10 @@ ActiveRecord::Schema.define(version: 20160820194240) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
+
+  add_index "album_types", ["slug"], name: "index_album_types_on_slug", unique: true, using: :btree
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -98,9 +101,11 @@ ActiveRecord::Schema.define(version: 20160820194240) do
     t.date     "end_date"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "slug"
   end
 
   add_index "albums", ["album_type_id"], name: "index_albums_on_album_type_id", using: :btree
+  add_index "albums", ["slug"], name: "index_albums_on_slug", unique: true, using: :btree
 
   create_table "band_albums", force: :cascade do |t|
     t.integer  "band_id"
@@ -179,13 +184,19 @@ ActiveRecord::Schema.define(version: 20160820194240) do
     t.boolean  "musician_is_band"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "slug"
   end
+
+  add_index "bands", ["slug"], name: "index_bands_on_slug", unique: true, using: :btree
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
+
+  add_index "genres", ["slug"], name: "index_genres_on_slug", unique: true, using: :btree
 
   create_table "musician_labels", force: :cascade do |t|
     t.string   "name"
@@ -219,7 +230,10 @@ ActiveRecord::Schema.define(version: 20160820194240) do
     t.text     "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "slug"
   end
+
+  add_index "musicians", ["slug"], name: "index_musicians_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
