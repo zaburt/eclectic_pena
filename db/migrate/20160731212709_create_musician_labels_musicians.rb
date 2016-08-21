@@ -1,6 +1,6 @@
-class CreateMusicianMusicianLabels < ActiveRecord::Migration
+class CreateMusicianLabelsMusicians < ActiveRecord::Migration
   def change
-    create_table :musician_musician_labels do |t|
+    create_table :musician_labels_musicians do |t|
       t.references :musician, index: true, foreign_key: true
       t.references :musician_label, index: true, foreign_key: true
 

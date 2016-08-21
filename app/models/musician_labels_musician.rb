@@ -14,10 +14,7 @@
 #  index_musician_musician_labels_on_musician_label_id  (musician_label_id)
 #
 
-require 'test_helper'
-
-class MusicianMusicianLabelTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class MusicianLabelsMusician < ActiveRecord::Base
+  belongs_to :musician
+  belongs_to :musician_label
 end
