@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_time_zone
   before_filter :set_dynamic_hosts
+  # before_filter :set_pagination
   # before_filter :authenticate_user!
 
   # skip_around_filter :set_locale_from_url
@@ -43,5 +44,8 @@ class ApplicationController < ActionController::Base
     Time.zone = 'Europe/Istanbul'
   end
 
+  # def set_pagination
+  #   WillPaginate.per_page = 30
+  # end
 end
 

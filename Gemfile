@@ -44,6 +44,8 @@ gem 'unicorn'
 # foundation
 gem 'foundation-rails', '~> 6.2'
 gem 'foundation-icons-sass-rails', '~> 3.0.0'
+
+# gem 'will_paginate', '~> 3.1.0'
 # gem 'will_paginate-foundation'
 
 gem 'haml-rails', '~> 0.9'
