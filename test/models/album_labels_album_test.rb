@@ -16,7 +16,7 @@
 
 require 'test_helper'
 
-class AlbumAlbumLabelTest < ActiveSupport::TestCase
+class AlbumLabelsAlbumTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

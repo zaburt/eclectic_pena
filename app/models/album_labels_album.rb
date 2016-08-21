@@ -14,7 +14,7 @@
 #  index_album_album_labels_on_album_label_id  (album_label_id)
 #
 
-class AlbumAlbumLabel < ActiveRecord::Base
+class AlbumLabelsAlbum < ActiveRecord::Base
   belongs_to :album
   belongs_to :album_label
 end
