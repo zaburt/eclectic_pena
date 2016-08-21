@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820203159) do
+ActiveRecord::Schema.define(version: 20160821174142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20160820203159) do
   end
 
   add_index "album_types", ["slug"], name: "index_album_types_on_slug", unique: true, using: :btree
+
+  create_table "album_versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.text     "object_changes"
+    t.datetime "created_at"
+  end
+
+  add_index "album_versions", ["item_type", "item_id"], name: "index_album_versions_on_item_type_and_item_id", using: :btree
 
   create_table "albums", force: :cascade do |t|
     t.string   "name"
@@ -176,6 +188,18 @@ ActiveRecord::Schema.define(version: 20160820203159) do
 
   add_index "band_urls", ["band_id"], name: "index_band_urls_on_band_id", using: :btree
 
+  create_table "band_versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.text     "object_changes"
+    t.datetime "created_at"
+  end
+
+  add_index "band_versions", ["item_type", "item_id"], name: "index_band_versions_on_item_type_and_item_id", using: :btree
+
   create_table "bands", force: :cascade do |t|
     t.string   "name"
     t.string   "country"
@@ -222,6 +246,18 @@ ActiveRecord::Schema.define(version: 20160820203159) do
   end
 
   add_index "musician_photos", ["musician_id"], name: "index_musician_photos_on_musician_id", using: :btree
+
+  create_table "musician_versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.text     "object_changes"
+    t.datetime "created_at"
+  end
+
+  add_index "musician_versions", ["item_type", "item_id"], name: "index_musician_versions_on_item_type_and_item_id", using: :btree
 
   create_table "musicians", force: :cascade do |t|
     t.string   "name"

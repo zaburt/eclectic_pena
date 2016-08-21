@@ -21,6 +21,8 @@ class Album < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
+  has_paper_trail :class_name => 'AlbumVersion'
+
   belongs_to :album_type
 
   # force friendly_id to update slug
