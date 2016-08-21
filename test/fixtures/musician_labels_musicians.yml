@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: musician_musician_labels
+# Table name: musician_labels_musicians
 #
 #  id                :integer          not null, primary key
 #  musician_id       :integer
@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_musician_musician_labels_on_musician_id        (musician_id)
-#  index_musician_musician_labels_on_musician_label_id  (musician_label_id)
+#  index_musician_labels_musicians_on_musician_id        (musician_id)
+#  index_musician_labels_musicians_on_musician_label_id  (musician_label_id)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

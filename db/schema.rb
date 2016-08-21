@@ -228,15 +228,15 @@ ActiveRecord::Schema.define(version: 20160821174142) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "musician_musician_labels", force: :cascade do |t|
+  create_table "musician_labels_musicians", force: :cascade do |t|
     t.integer  "musician_id"
     t.integer  "musician_label_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
-  add_index "musician_musician_labels", ["musician_id"], name: "index_musician_musician_labels_on_musician_id", using: :btree
-  add_index "musician_musician_labels", ["musician_label_id"], name: "index_musician_musician_labels_on_musician_label_id", using: :btree
+  add_index "musician_labels_musicians", ["musician_id"], name: "index_musician_labels_musicians_on_musician_id", using: :btree
+  add_index "musician_labels_musicians", ["musician_label_id"], name: "index_musician_labels_musicians_on_musician_label_id", using: :btree
 
   create_table "musician_photos", force: :cascade do |t|
     t.string   "name"
@@ -311,7 +311,7 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   add_foreign_key "band_musicians", "musicians"
   add_foreign_key "band_photos", "bands"
   add_foreign_key "band_urls", "bands"
-  add_foreign_key "musician_musician_labels", "musician_labels"
-  add_foreign_key "musician_musician_labels", "musicians"
+  add_foreign_key "musician_labels_musicians", "musician_labels"
+  add_foreign_key "musician_labels_musicians", "musicians"
   add_foreign_key "musician_photos", "musicians"
 end
