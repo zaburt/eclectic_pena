@@ -56,7 +56,7 @@ gem 'devise-i18n-views'
 
 gem 'dotenv-rails'
 gem 'friendly_id'
-gem 'paperclip', '~> 4.3'
+gem 'paperclip'#, '~> 4.3'
 # gem 'route_translator'
 gem 'simple_form'
 gem 'social-share-button'
