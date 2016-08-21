@@ -23,6 +23,18 @@ class Band < ActiveRecord::Base
 
   has_paper_trail :class_name => 'BandVersion'
 
+  has_many :band_photos
+  has_many :band_urls
+  has_many :band_genres
+  has_many :genres, -> {order(:name)}, :through => :band_genres, :dependent => :destroy
+  has_many :band_albums
+  has_many :albums, -> {order(:name)}, :through => :band_albums, :dependent => :destroy
+  has_many :band_musicians
+  has_many :musicians, -> {order(:name)}, :through => :band_musicians, :dependent => :destroy
+  has_many :band_labels_bands
+  has_many :band_labels, -> {order(:name)}, :through => :band_labels_bands, :dependent => :destroy
+
+
   # force friendly_id to update slug
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
