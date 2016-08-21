@@ -16,16 +16,6 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "album_album_labels", force: :cascade do |t|
-    t.integer  "album_id"
-    t.integer  "album_label_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "album_album_labels", ["album_id"], name: "index_album_album_labels_on_album_id", using: :btree
-  add_index "album_album_labels", ["album_label_id"], name: "index_album_album_labels_on_album_label_id", using: :btree
-
   create_table "album_comments", force: :cascade do |t|
     t.integer  "album_id"
     t.integer  "user_id"
@@ -62,6 +52,16 @@ ActiveRecord::Schema.define(version: 20160821174142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "album_labels_albums", force: :cascade do |t|
+    t.integer  "album_id"
+    t.integer  "album_label_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "album_labels_albums", ["album_id"], name: "index_album_labels_albums_on_album_id", using: :btree
+  add_index "album_labels_albums", ["album_label_id"], name: "index_album_labels_albums_on_album_label_id", using: :btree
 
   create_table "album_musicians", force: :cascade do |t|
     t.integer  "album_id"
@@ -290,13 +290,13 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "album_album_labels", "album_labels"
-  add_foreign_key "album_album_labels", "albums"
   add_foreign_key "album_comments", "albums"
   add_foreign_key "album_comments", "users"
   add_foreign_key "album_covers", "albums"
   add_foreign_key "album_genres", "albums"
   add_foreign_key "album_genres", "genres"
+  add_foreign_key "album_labels_albums", "album_labels"
+  add_foreign_key "album_labels_albums", "albums"
   add_foreign_key "album_musicians", "albums"
   add_foreign_key "album_musicians", "musicians"
   add_foreign_key "album_tracks", "albums"

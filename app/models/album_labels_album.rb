@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: album_album_labels
+# Table name: album_labels_albums
 #
 #  id             :integer          not null, primary key
 #  album_id       :integer
@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_album_album_labels_on_album_id        (album_id)
-#  index_album_album_labels_on_album_label_id  (album_label_id)
+#  index_album_labels_albums_on_album_id        (album_id)
+#  index_album_labels_albums_on_album_label_id  (album_label_id)
 #
 
 class AlbumLabelsAlbum < ActiveRecord::Base
