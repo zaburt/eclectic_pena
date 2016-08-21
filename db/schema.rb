@@ -129,16 +129,6 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   add_index "band_albums", ["album_id"], name: "index_band_albums_on_album_id", using: :btree
   add_index "band_albums", ["band_id"], name: "index_band_albums_on_band_id", using: :btree
 
-  create_table "band_band_labels", force: :cascade do |t|
-    t.integer  "band_id"
-    t.integer  "band_label_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "band_band_labels", ["band_id"], name: "index_band_band_labels_on_band_id", using: :btree
-  add_index "band_band_labels", ["band_label_id"], name: "index_band_band_labels_on_band_label_id", using: :btree
-
   create_table "band_genres", force: :cascade do |t|
     t.integer  "band_id"
     t.integer  "genre_id"
@@ -154,6 +144,16 @@ ActiveRecord::Schema.define(version: 20160821174142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "band_labels_bands", force: :cascade do |t|
+    t.integer  "band_id"
+    t.integer  "band_label_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "band_labels_bands", ["band_id"], name: "index_band_labels_bands_on_band_id", using: :btree
+  add_index "band_labels_bands", ["band_label_id"], name: "index_band_labels_bands_on_band_label_id", using: :btree
 
   create_table "band_musicians", force: :cascade do |t|
     t.integer  "band_id"
@@ -303,10 +303,10 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   add_foreign_key "albums", "album_types"
   add_foreign_key "band_albums", "albums"
   add_foreign_key "band_albums", "bands"
-  add_foreign_key "band_band_labels", "band_labels"
-  add_foreign_key "band_band_labels", "bands"
   add_foreign_key "band_genres", "bands"
   add_foreign_key "band_genres", "genres"
+  add_foreign_key "band_labels_bands", "band_labels"
+  add_foreign_key "band_labels_bands", "bands"
   add_foreign_key "band_musicians", "bands"
   add_foreign_key "band_musicians", "musicians"
   add_foreign_key "band_photos", "bands"

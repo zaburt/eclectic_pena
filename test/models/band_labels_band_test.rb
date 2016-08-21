@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: band_band_labels
+# Table name: band_labels_bands
 #
 #  id            :integer          not null, primary key
 #  band_id       :integer
@@ -10,8 +10,8 @@
 #
 # Indexes
 #
-#  index_band_band_labels_on_band_id        (band_id)
-#  index_band_band_labels_on_band_label_id  (band_label_id)
+#  index_band_labels_bands_on_band_id        (band_id)
+#  index_band_labels_bands_on_band_label_id  (band_label_id)
 #
 
 require 'test_helper'
