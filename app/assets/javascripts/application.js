@@ -15,6 +15,8 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require foundation
+//= require dataTables/jquery.dataTables
+//= require dataTables/dataTables.foundation
 //= require common
 
 $(function() {
