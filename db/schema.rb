@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821174142) do
+ActiveRecord::Schema.define(version: 20160823212837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,12 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   create_table "album_covers", force: :cascade do |t|
     t.string   "name"
     t.integer  "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "album_covers", ["album_id"], name: "index_album_covers_on_album_id", using: :btree
@@ -171,8 +175,12 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   create_table "band_photos", force: :cascade do |t|
     t.string   "name"
     t.integer  "band_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "band_photos", ["band_id"], name: "index_band_photos_on_band_id", using: :btree
@@ -241,8 +249,12 @@ ActiveRecord::Schema.define(version: 20160821174142) do
   create_table "musician_photos", force: :cascade do |t|
     t.string   "name"
     t.integer  "musician_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "musician_photos", ["musician_id"], name: "index_musician_photos_on_musician_id", using: :btree
