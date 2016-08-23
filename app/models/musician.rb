@@ -22,6 +22,13 @@ class Musician < ActiveRecord::Base
 
   has_paper_trail :class_name => 'MusicianVersion'
 
+  has_many :musician_photos, :dependent => :destroy
+  has_many :musician_labels_musicians
+  has_many :musician_labels, -> {order(:name)}, :through => :musician_labels_musicians, :dependent => :destroy
+  has_many :band_musicians
+  has_many :bands, -> {order(:name)}, :through => :band_musicians, :dependent => :destroy
+
+
   # force friendly_id to update slug
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
