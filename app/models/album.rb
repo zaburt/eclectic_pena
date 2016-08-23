@@ -25,6 +25,20 @@ class Album < ActiveRecord::Base
 
   belongs_to :album_type
 
+  has_many :album_comments
+  has_many :album_covers
+  has_many :album_genres
+  has_many :genres, -> {order(:name)}, :through => :album_genres, :dependent => :destroy
+  has_many :album_labels_albums
+  has_many :album_labels, -> {order(:name)}, :through => :album_labels_albums, :dependent => :destroy
+  has_many :album_musicians
+  has_many :musicians, -> {order(:name)}, :through => :album_musicians, :dependent => :destroy
+  has_many :album_tracks
+
+  has_one :band_album
+  has_one :band, :through => :band_album
+
+
   # force friendly_id to update slug
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
