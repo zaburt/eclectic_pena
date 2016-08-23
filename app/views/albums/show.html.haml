@@ -13,6 +13,18 @@
   %b End date:
   = @album.end_date
 
+- @album.album_tracks.each do |tracklist|
+  %p
+    %b Tracks:
+    %table
+      %tbody
+        - tracklist.tracks.each do |name, musician, time|
+          %tr
+            %td= name
+            %td= time
+            %td= musician
+
+
 = link_to 'Edit', edit_album_path(@album)
 \|
 = link_to 'Back', albums_path

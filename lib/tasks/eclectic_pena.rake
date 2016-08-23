@@ -22,6 +22,7 @@ namespace :eclectic_pena do
       all_artists = []
       all_genres = []
       all_albums = {}
+      all_tracks = {}
 
       Zip::File.open(filepath) do |z|
         entry = z.get_entry('tellico.xml')
@@ -55,7 +56,8 @@ namespace :eclectic_pena do
           artists: artists,
           year: year,
           genres: genres,
-          comments: comments
+          comments: comments,
+          tracks: tracks
         }
 
         if display_parse_results
@@ -116,6 +118,8 @@ namespace :eclectic_pena do
         data[:artists].each do |artist|
           BandAlbum.create(:album_id => album.id, :band_id => band_ids[artist]) if artist.present?
         end
+
+        AlbumTrack.create(:album_id => album.id, :tracks => data[:tracks]) if data[:tracks].present?
       end
     end
 
