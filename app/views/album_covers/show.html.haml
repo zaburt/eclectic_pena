@@ -6,6 +6,9 @@
 %p
   %b Album:
   = @album_cover.album
+%p
+  %b Image:
+  = image_tag @album_cover.image.url
 
 = link_to 'Edit', edit_album_cover_path(@album_cover)
 \|

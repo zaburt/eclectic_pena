@@ -53,6 +53,6 @@ class BandPhotosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_photo_params
-      params.require(:band_photo).permit(:name, :band_id)
+      params.require(:band_photo).permit(:name, :band_id, :image)
     end
 end

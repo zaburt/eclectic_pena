@@ -4,6 +4,7 @@
   .form-inputs
     = f.input :name
     = f.association :band
+    = f.input :image, :as => :file
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'

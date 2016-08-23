@@ -6,6 +6,9 @@
 %p
   %b Musician:
   = @musician_photo.musician
+%p
+  %b Image:
+  = image_tag @musician_photo.image.url
 
 = link_to 'Edit', edit_musician_photo_path(@musician_photo)
 \|

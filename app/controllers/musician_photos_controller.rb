@@ -53,6 +53,6 @@ class MusicianPhotosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def musician_photo_params
-      params.require(:musician_photo).permit(:name, :musician_id)
+      params.require(:musician_photo).permit(:name, :musician_id, :image)
     end
 end

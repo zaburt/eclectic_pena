@@ -6,6 +6,9 @@
 %p
   %b Band:
   = @band_photo.band
+%p
+  %b Image:
+  = image_tag @band_photo.image.url
 
 = link_to 'Edit', edit_band_photo_path(@band_photo)
 \|
