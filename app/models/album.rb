@@ -38,6 +38,7 @@ class Album < ActiveRecord::Base
   has_one :band_album
   has_one :band, :through => :band_album
 
+  validates_presence_of :name
 
   # force friendly_id to update slug
   def should_generate_new_friendly_id?

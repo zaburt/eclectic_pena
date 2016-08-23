@@ -34,6 +34,7 @@ class Band < ActiveRecord::Base
   has_many :band_labels_bands
   has_many :band_labels, -> {order(:name)}, :through => :band_labels_bands, :dependent => :destroy
 
+  validates_presence_of :name
 
   # force friendly_id to update slug
   def should_generate_new_friendly_id?

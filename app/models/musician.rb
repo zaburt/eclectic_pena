@@ -28,6 +28,7 @@ class Musician < ActiveRecord::Base
   has_many :band_musicians
   has_many :bands, -> {order(:name)}, :through => :band_musicians, :dependent => :destroy
 
+  validates_presence_of :name
 
   # force friendly_id to update slug
   def should_generate_new_friendly_id?
