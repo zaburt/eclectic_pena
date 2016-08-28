@@ -2,6 +2,16 @@
 class ServerSideDatatables
   delegate :params, :h, :raw, :link_to, :number_to_currency, :to => :@view
 
+  ASC = 'asc'
+  DESC = 'desc'
+
+  PINGBACK = :draw
+  AND_STR = ' AND '
+  OR_STR = ' OR '
+
+  DEFAULT_LENGTH = 20
+  SEARCH_DELIMITER = ' '
+
   def initialize(klass,view)
     @klass = klass
     @view = view
@@ -12,7 +22,7 @@ class ServerSideDatatables
 
   def as_json(options = {})
     {
-      :draw => params[:draw].to_i,
+      PINGBACK => params[PINGBACK].to_i,
       :recordsTotal => @klass.count,
       :recordsFiltered => items.total_entries,
       :data => data
@@ -40,10 +50,7 @@ class ServerSideDatatables
     items = selected_columns(items)
     items = items.order(sort_order)
     items = items.page(page).per_page(per_page)
-
-    if params[:search] && params[:search][:value].present?
-      items = items.where(quick_search)
-    end
+    items = items.where(quick_search) if search_value.present?
 
     items
   end
@@ -57,15 +64,15 @@ class ServerSideDatatables
   end
 
   def quick_search
-    search_for = params[:search][:value].split(' ')
+    search_for = search_value.split(SEARCH_DELIMITER)
     terms = {}
-    which_one = -1
+    current_ix = -1
 
     criteria = search_for.inject([]) do |criteria, atom|
-      which_one += 1
-      terms["search#{which_one}".to_sym] = "%#{atom}%"
-      criteria << "(#{search_columns.map{|col| "#{col} ILIKE :search#{which_one}"}.join(' OR ')})"
-    end.join(' and ')
+      current_ix += 1
+      terms["search#{current_ix}".to_sym] = "%#{atom}%"
+      criteria << "(#{search_columns.map{|col| "#{col} ILIKE :search#{current_ix}"}.join(OR_STR)})"
+    end.join(AND_STR)
 
     [criteria, terms]
   end
@@ -75,14 +82,14 @@ class ServerSideDatatables
   end
 
   def per_page
-    params[:length].to_i > 0 ? params[:length].to_i : 10
+    params[:length].to_i > 0 ? params[:length].to_i : DEFAULT_LENGTH
   end
 
   # TODO: enable multicolumn order and use columns other than 0
   def sort_order
     order_data = params[:order]['0']
     column_name = columns[order_data['column'].to_i]
-    direction = order_data['dir'] == 'desc' ? 'desc' : 'asc'
+    direction = order_data['dir'] == DESC ? DESC : ASC
 
     "#{column_name} #{direction}"
   end
@@ -97,5 +104,8 @@ class ServerSideDatatables
     cols
   end
 
+  def search_value
+    params[:search][:value] rescue ''
+  end
 end
 
