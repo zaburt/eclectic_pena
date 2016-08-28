@@ -48,7 +48,7 @@ class AlbumTypesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_album_type
-      @album_type = AlbumType.find(params[:id])
+      @album_type = AlbumType.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
