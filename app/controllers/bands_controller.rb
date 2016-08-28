@@ -3,7 +3,12 @@ class BandsController < ApplicationController
 
   # GET /bands
   def index
-    @bands = Band.all
+    # @bands = Band.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: BandsDatatable.new(Band, view_context) }
+    end
   end
 
   # GET /bands/1

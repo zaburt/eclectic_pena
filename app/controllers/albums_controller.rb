@@ -3,7 +3,12 @@ class AlbumsController < ApplicationController
 
   # GET /albums
   def index
-    @albums = Album.all
+    # @albums = Album.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: AlbumsDatatable.new(Album, view_context) }
+    end
   end
 
   # GET /albums/1

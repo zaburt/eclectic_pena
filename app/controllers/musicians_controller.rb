@@ -3,7 +3,12 @@ class MusiciansController < ApplicationController
 
   # GET /musicians
   def index
-    @musicians = Musician.all
+    # @musicians = Musician.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: MusiciansDatatable.new(Musician, view_context) }
+    end
   end
 
   # GET /musicians/1

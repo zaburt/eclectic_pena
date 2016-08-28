@@ -1,29 +1,52 @@
-%h1 Listing bands
+.row
+  .small-24.columns
+    %h3
+      Bands
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Country
-      %th Website
-      %th Biography
-      %th Musician is band
-      %th
-      %th
-      %th
+    %table#bands_table.pena_datatables{'data-source' => bands_path}
+      %thead
+        %tr
+          %th
+            Name
+          %th
+            Country
+          %th
+            Website
+          %th.datatable_no_search.datatable_no_order
+          %th.datatable_no_search.datatable_no_order
+          %th.datatable_no_search.datatable_no_order
 
-  %tbody
-    - @bands.each do |band|
-      %tr
-        %td= band.name
-        %td= band.country
-        %td= band.website
-        %td= band.biography
-        %td= band.musician_is_band
-        %td= link_to 'Show', band
-        %td= link_to 'Edit', edit_band_path(band)
-        %td= link_to 'Destroy', band, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+      /  - @bands.each do |band|
+      /    %tr
+      /      %td= band.name
+      /      %td= band.country
+      /      %td= band.website
+      /      %td= link_to 'Show', band
+      /      %td= link_to 'Edit', edit_band_path(band)
+      /      %td= link_to 'Destroy', band, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Band', new_band_path
+    = link_to 'New Band', new_band_path, :class => 'button'
+
+:javascript
+  $(function() {
+    datatables_config = $.extend(
+      {},
+      datatables_defaults,
+      {
+        processing: true,
+        serverSide: true,
+        ajax: {
+          // type: 'POST'
+          url: $('#bands_table').data('source')
+        },
+      }
+    );
+
+    $('#bands_table').DataTable(datatables_config);
+    $('.dataTables_filter input').attr('placeholder', pena_datatable_str.search);
+  });
+
+
