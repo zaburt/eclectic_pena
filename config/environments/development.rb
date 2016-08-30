@@ -38,4 +38,24 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  ### custom settings
+
+  # config.action_mailer.default_url_options = { :host => 'localhost:9000' }
+
+  # silence asset info in logs
+  # config.quiet_assets = false
+  # config.quiet_assets_paths << '/silent/'
+
+  # MailCatcher
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {:address => 'localhost', :port => 1025}
+
+  # memcache
+  # config.cache_store = :mem_cache_store
+  config.cache_store = :dalli_store,
+    *(ENV['MEMCACHE_SERVERS'].presence || '127.0.0.1').split(','),
+    {:namespace => 'pena', :expires_in => 1.day}
+
 end
+
