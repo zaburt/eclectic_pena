@@ -2,7 +2,7 @@
 # systemd unit for eclectic_pena service
 #
 # setup rvm as eclectic_pena app user to create a wrapper for unicorn
-#   rvm wrapper 2.3.0@eclectic_pena eclectic_pena unicorn
+#   rvm wrapper 2.3.1@eclectic_pena eclectic_pena unicorn
 #
 # put this file as /etc/systemd/system/eclectic_pena.service
 #   systemctl start eclectic_pena
