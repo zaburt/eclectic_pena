@@ -7,7 +7,7 @@ class BandsDatatable < ServerSideDatatables
   def data
     items.map do |band|
       [
-        band.name,
+        link_to(band.name, band),
         band.country,
         band.website,
         link_to('Show', band),

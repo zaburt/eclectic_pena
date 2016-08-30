@@ -11,7 +11,7 @@ class AlbumsDatatable < ServerSideDatatables
   def data
     items.map do |album|
       [
-        album.name,
+        link_to(album.name, album),
         album.album_type.try(:name),
         album.date,
         album.end_date,
