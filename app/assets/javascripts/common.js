@@ -23,7 +23,7 @@ function str_includes(full_str, search_str) {
   return matches;
 }
 
-
+var current_page_datatables;
 var pena_datatable_str = {
   all: 'All',
   empty_table: 'No results',
@@ -68,6 +68,22 @@ var datatables_defaults = {
 };
 
 $(function() {
+
+  datatables_config = $.extend(
+    {},
+    datatables_defaults,
+    {
+      processing: true,
+      serverSide: true,
+      ajax: {
+        // type: 'POST'
+        url: $('.serverside_datatables').data('source')
+      },
+    }
+  );
+
+  current_page_datatables = $('.serverside_datatables').dataTable(datatables_config);
+  $('.dataTables_filter input').attr('placeholder', pena_datatable_str.search);
 
 });
 

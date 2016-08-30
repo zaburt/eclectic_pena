@@ -3,7 +3,7 @@
     %h3
       Albums
 
-    %table#albums_table.pena_datatables{'data-source' => albums_path}
+    %table#albums_table.serverside_datatables{'data-source' => albums_path}
       %thead
         %tr
           %th
@@ -32,24 +32,4 @@
     %br
 
     = link_to 'New Album', new_album_path
-
-:javascript
-  $(function() {
-    datatables_config = $.extend(
-      {},
-      datatables_defaults,
-      {
-        processing: true,
-        serverSide: true,
-        ajax: {
-          // type: 'POST'
-          url: $('#albums_table').data('source')
-        },
-      }
-    );
-
-    $('#albums_table').DataTable(datatables_config);
-    $('.dataTables_filter input').attr('placeholder', pena_datatable_str.search);
-  });
-
 

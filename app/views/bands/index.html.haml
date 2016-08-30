@@ -3,7 +3,7 @@
     %h3
       Bands
 
-    %table#bands_table.pena_datatables{'data-source' => bands_path}
+    %table#bands_table.serverside_datatables{'data-source' => bands_path}
       %thead
         %tr
           %th
@@ -29,24 +29,4 @@
     %br
 
     = link_to 'New Band', new_band_path, :class => 'button'
-
-:javascript
-  $(function() {
-    datatables_config = $.extend(
-      {},
-      datatables_defaults,
-      {
-        processing: true,
-        serverSide: true,
-        ajax: {
-          // type: 'POST'
-          url: $('#bands_table').data('source')
-        },
-      }
-    );
-
-    $('#bands_table').DataTable(datatables_config);
-    $('.dataTables_filter input').attr('placeholder', pena_datatable_str.search);
-  });
-
 

@@ -3,7 +3,7 @@
     %h3
       Musicians
 
-    %table#musicians_table.pena_datatables{'data-source' => musicians_path}
+    %table#musicians_table.serverside_datatables{'data-source' => musicians_path}
       %thead
         %tr
           %th
@@ -29,24 +29,4 @@
     %br
 
     = link_to 'New Musician', new_musician_path
-
-:javascript
-  $(function() {
-    datatables_config = $.extend(
-      {},
-      datatables_defaults,
-      {
-        processing: true,
-        serverSide: true,
-        ajax: {
-          // type: 'POST'
-          url: $('#musicians_table').data('source')
-        },
-      }
-    );
-
-    $('#musicians_table').DataTable(datatables_config);
-    $('.dataTables_filter input').attr('placeholder', pena_datatable_str.search);
-  });
-
 
