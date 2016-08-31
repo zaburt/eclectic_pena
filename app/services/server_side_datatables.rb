@@ -107,5 +107,10 @@ class ServerSideDatatables
   def search_value
     params[:search][:value] rescue ''
   end
+
+  def link_if_exists(data)
+    return '' if data.blank?
+    link_to data
+  end
 end
 

@@ -1,7 +1,13 @@
-%h1 Editing band
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @band.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @band
-\|
-= link_to 'Back', bands_path
+.row
+  .small-24.columns
+    = link_to 'Show', @band
+    = link_to 'Back', bands_path
+

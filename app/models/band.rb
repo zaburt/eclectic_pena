@@ -40,5 +40,12 @@ class Band < ActiveRecord::Base
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
   end
+
+  def country_name
+    return '' if country.blank?
+    country_obj = ISO3166::Country[country]
+    country_obj.translations[I18n.locale.to_s] || country_obj.name
+  end
+
 end
 

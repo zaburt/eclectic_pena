@@ -1,21 +1,45 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @band.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band.country')
+  .small-16.columns
+    = @band.country_name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band.website')
+  .small-16.columns
+    = link_to @band.website
+.row
+  .small-8.columns
+    = t('genres')
+  .small-16.columns
+    = @band.genres.pluck(:name).join(', ')
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band.biography')
+  .small-16.columns.small-offset-1
+    %article
+      = simple_format(@band.biography, {}, :sanitize => false)
+%br
 
-%p
-  %b Name:
-  = @band.name
-%p
-  %b Country:
-  = @band.country
-%p
-  %b Website:
-  = @band.website
-%p
-  %b Biography:
-  = @band.biography
-%p
-  %b Musician is band:
-  = @band.musician_is_band
+- if @band.band_photos.any?
+  .row
+    .small-24.columns
+      - @band.band_photos.each do |photo|
+        - reveal_id = "image_reveal_#{photo.id}"
+        %a{'data-open' => reveal_id}
+          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+        .reveal{:id => reveal_id, 'data-reveal' => ''}
+          .text_italic
+            = photo.name
+          = image_tag photo.image.url(:original)
+          %button.close-button{'data-close' => '', 'aria-label' => t('close')}
+            %span{'aria-hidden' => 'true'}
+              &times;
+.row
+  .small-24.columns
+    = link_to 'Edit', edit_band_path(@band), :class => 'button'
+    = link_to 'Back', bands_path, :class => 'button'
 
-= link_to 'Edit', edit_band_path(@band)
-\|
-= link_to 'Back', bands_path

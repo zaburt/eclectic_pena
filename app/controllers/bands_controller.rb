@@ -58,6 +58,6 @@ class BandsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def band_params
-      params.require(:band).permit(:name, :country, :website, :biography, :musician_is_band)
+      params.require(:band).permit(:name, :country, :website, :biography, :musician_is_band, :genre_ids => [])
     end
 end

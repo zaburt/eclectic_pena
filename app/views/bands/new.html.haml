@@ -1,5 +1,12 @@
-%h1 New band
+.row
+  .small-24.columns.page_top
+    = t('generic.new_model', :name => Band.model_name.human)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Back', bands_path
+.row
+  .small-24.columns
+    = link_to 'Back', bands_path, :class => 'button'
+

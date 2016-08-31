@@ -1,17 +1,18 @@
 .row
-  .small-24.columns
-    %h3
-      Bands
+  .small-24.columns.page_top
+    = t('bands')
 
+.row
+  .small-24.columns
     %table#bands_table.serverside_datatables{'data-source' => bands_path}
       %thead
         %tr
           %th
-            Name
+            = t('activerecord.attributes.band.name')
           %th
-            Country
+            = t('activerecord.attributes.band.country')
           %th
-            Website
+            = t('activerecord.attributes.band.website')
           %th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
@@ -28,5 +29,5 @@
 
     %br
 
-    = link_to 'New Band', new_band_path, :class => 'button'
+    = link_to t('generic.new_model', :name => Band.model_name.human), new_band_path, :class => 'button'
 
