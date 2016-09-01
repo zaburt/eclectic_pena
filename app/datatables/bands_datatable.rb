@@ -10,7 +10,7 @@ class BandsDatatable < ServerSideDatatables
         link_to(band.name, band),
         band.country_name,
         link_if_exists(band.website),
-        link_to('Show', band),
+        # link_to('Show', band),
         link_to('Edit', edit_band_path(band)),
         link_to('Destroy', band, :method => :delete, :data => {:confirm => 'Are you sure?'})
       ]
@@ -22,7 +22,7 @@ class BandsDatatable < ServerSideDatatables
       'name',
       'country',
       'website',
-      '',
+      # '',
       '',
       ''
     ]
