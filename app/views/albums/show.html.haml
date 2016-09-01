@@ -8,7 +8,7 @@
     = @album.album_type
 .row
   .small-8.columns
-    = t('activerecord.attributes.album.end_date')
+    = t('activerecord.attributes.album.date')
   .small-16.columns
     = @album.date
 .row
@@ -27,9 +27,12 @@
           %tbody
             - tracklist.tracks.each do |name, musician, time|
               %tr
-                %td= name
-                %td= time
-                %td= musician
+                %td
+                  = name
+                %td
+                  = time
+                %td
+                  = musician
 
 .row
   .small-24.columns

@@ -8,13 +8,13 @@
       %thead
         %tr
           %th
-            Name
+            = t('activerecord.attributes.album.name')
           %th.datatable_no_search
-            Album type
+            = t('activerecord.attributes.album.album_type')
           %th.datatable_no_search
-            Date
+            = t('activerecord.attributes.album.date')
           %th.datatable_no_search
-            End date
+            = t('activerecord.attributes.album.end_date')
           /%th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
@@ -32,5 +32,5 @@
 
     %br
 
-    = link_to 'New Album', new_album_path
+    = link_to t('generic.new_model', :name => Album.model_name.human), new_album_path, :class => 'button'
 

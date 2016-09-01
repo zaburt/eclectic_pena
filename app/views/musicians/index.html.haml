@@ -1,17 +1,18 @@
 .row
-  .small-24.columns
-    %h3
-      Musicians
+  .small-24.columns.page_top
+    = t('musicians')
 
+.row
+  .small-24.columns
     %table#musicians_table.serverside_datatables{'data-source' => musicians_path}
       %thead
         %tr
           %th
-            Name
+            = t('activerecord.attributes.musician.name')
           %th.datatable_no_search
-            Birthdate
+            = t('activerecord.attributes.musician.birthdate')
           %th
-            Country
+            = t('activerecord.attributes.musician.country')
           /%th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
           %th.datatable_no_search.datatable_no_order
@@ -28,5 +29,5 @@
 
     %br
 
-    = link_to 'New Musician', new_musician_path
+    = link_to t('generic.new_model', :name => Musician.model_name.human), new_musician_path, :class => 'button'
 

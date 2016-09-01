@@ -1,18 +1,25 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @musician.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.musician.birthdate')
+  .small-16.columns
+    = @musician.birthdate
+.row
+  .small-8.columns
+    = t('activerecord.attributes.musician.country')
+  .small-16.columns
+    = @musician.country_name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.musician.biography')
+  .small-16.columns.small-offset-1
+    %article
+      = simple_format(@musician.biography, {}, :sanitize => false)
 
-%p
-  %b Name:
-  = @musician.name
-%p
-  %b Birthdate:
-  = @musician.birthdate
-%p
-  %b Country:
-  = @musician.country
-%p
-  %b Biography:
-  = @musician.biography
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_musician_path(@musician), :class => 'button'
+    = link_to t('back'), musicians_path, :class => 'button'
 
-= link_to 'Edit', edit_musician_path(@musician)
-\|
-= link_to 'Back', musicians_path

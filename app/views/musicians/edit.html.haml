@@ -1,7 +1,13 @@
-%h1 Editing musician
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @musician.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @musician
-\|
-= link_to 'Back', musicians_path
+.row
+  .small-24.columns
+    = link_to t('show'), @musician, :class => 'button'
+    = link_to t('back'), musicians_path, :class => 'button'
+
