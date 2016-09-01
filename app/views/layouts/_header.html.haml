@@ -16,46 +16,46 @@
           %li
             = link_to t('home'), root_path
           %li
-            = link_to 'albums', '#'
+            = link_to t('albums'), '#'
             %ul.menu
               %li
-                = link_to 'albums', albums_path
+                = link_to t('albums'), albums_path
               %li
-                = link_to 'album_comments', album_comments_path
+                = link_to t('album_comments'), album_comments_path
               %li
-                = link_to 'album_covers', album_covers_path
+                = link_to t('album_covers'), album_covers_path
               %li
-                = link_to 'album_labels', album_labels_path
+                = link_to t('album_labels'), album_labels_path
               %li
-                = link_to 'album_musicians', album_musicians_path
+                = link_to t('album_musicians'), album_musicians_path
               %li
-                = link_to 'album_tracks', album_tracks_path
+                = link_to t('album_tracks'), album_tracks_path
               %li
-                = link_to 'album_types', album_types_path
+                = link_to t('album_types'), album_types_path
           %li
-            = link_to 'bands', bands_path
+            = link_to t('bands'), bands_path
             %ul.menu
               %li
-                = link_to 'bands', bands_path
+                = link_to t('bands'), bands_path
               %li
-                = link_to 'band_labels', band_labels_path
+                = link_to t('band_labels'), band_labels_path
               %li
-                = link_to 'band_musicians', band_musicians_path
+                = link_to t('band_musicians'), band_musicians_path
               %li
-                = link_to 'band_photos', band_photos_path
+                = link_to t('band_photos'), band_photos_path
               %li
-                = link_to 'band_urls', band_urls_path
+                = link_to t('band_urls'), band_urls_path
           %li
-            = link_to 'musicians', musicians_path
+            = link_to t('musicians'), musicians_path
             %ul.menu
               %li
-                = link_to 'musicians', musicians_path
+                = link_to t('musicians'), musicians_path
               %li
-                = link_to 'musician_labels', musician_labels_path
+                = link_to t('musician_labels'), musician_labels_path
               %li
-                = link_to 'musician_photos', musician_photos_path
+                = link_to t('musician_photos'), musician_photos_path
           %li
-            = link_to 'genres', genres_path
+            = link_to t('genres'), genres_path
       .top-bar-right
         %ul.menu.vertical.medium-horizontal
           - if signed_in?
