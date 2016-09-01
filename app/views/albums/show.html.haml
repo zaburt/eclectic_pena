@@ -1,30 +1,38 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album.album_type')
+  .small-16.columns
+    = @album.album_type
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album.end_date')
+  .small-16.columns
+    = @album.date
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album.end_date')
+  .small-16.columns
+    = @album.end_date
 
-%p
-  %b Name:
-  = @album.name
-%p
-  %b Album type:
-  = @album.album_type
-%p
-  %b Date:
-  = @album.date
-%p
-  %b End date:
-  = @album.end_date
+.row
+  .small-24.columns
+    - @album.album_tracks.each do |tracklist|
+      %p
+        %b
+          = t('tracks')
+        %table
+          %tbody
+            - tracklist.tracks.each do |name, musician, time|
+              %tr
+                %td= name
+                %td= time
+                %td= musician
 
-- @album.album_tracks.each do |tracklist|
-  %p
-    %b Tracks:
-    %table
-      %tbody
-        - tracklist.tracks.each do |name, musician, time|
-          %tr
-            %td= name
-            %td= time
-            %td= musician
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_path(@album), :class => 'button'
+    = link_to t('back'), albums_path, :class => 'button'
 
-
-= link_to 'Edit', edit_album_path(@album)
-\|
-= link_to 'Back', albums_path

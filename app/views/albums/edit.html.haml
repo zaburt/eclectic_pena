@@ -1,7 +1,13 @@
-%h1 Editing album
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @album.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @album
-\|
-= link_to 'Back', albums_path
+.row
+  .small-24.columns
+    = link_to 'Show', @album
+    = link_to 'Back', albums_path
+

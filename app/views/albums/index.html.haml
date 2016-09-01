@@ -1,8 +1,9 @@
 .row
-  .small-24.columns
-    %h3
-      Albums
+  .small-24.columns.page_top
+    = t('albums')
 
+.row
+  .small-24.columns
     %table#albums_table.serverside_datatables{'data-source' => albums_path}
       %thead
         %tr
