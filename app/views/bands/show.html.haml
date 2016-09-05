@@ -25,19 +25,67 @@
 %br
 
 - if @band.band_photos.any?
-  .row
-    .small-24.columns
-      - @band.band_photos.each do |photo|
-        - reveal_id = "image_reveal_#{photo.id}"
-        %a{'data-open' => reveal_id}
-          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
-        .reveal{:id => reveal_id, 'data-reveal' => ''}
-          .text_italic
-            = photo.name
-          = image_tag photo.image.url(:original)
-          %button.close-button{'data-close' => '', 'aria-label' => t('close')}
-            %span{'aria-hidden' => 'true'}
-              &times;
+  %fieldset.fieldset
+    %legend
+      = t('band_photos')
+    .row
+      .small-24.columns
+        - @band.band_photos.each do |photo|
+          - reveal_id = "image_reveal_#{photo.id}"
+          %a{'data-open' => reveal_id}
+            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+          .reveal{:id => reveal_id, 'data-reveal' => ''}
+            .text_italic
+              = photo.name
+            = image_tag photo.image.url(:original)
+            %button.close-button{'data-close' => '', 'aria-label' => t('close')}
+              %span{'aria-hidden' => 'true'}
+                &times;
+
+%fieldset.fieldset
+  %legend
+    = t('band_musicians')
+  - @band.band_musicians.each do |band_musician|
+    .row
+      .small-16.columns
+        = link_to band_musician.musician.name, band_musician.musician
+      .small-4.columns
+        = band_musician.since
+      .small-4.columns
+        = band_musician.current ? '-' : band_musician.until
+
+%fieldset.fieldset
+  %legend
+    = t('band_urls')
+  - @band.band_urls.each do |url|
+    .row
+      .small-10.columns
+        = link_to url.url
+      .small-10.columns
+        = url.description
+      .small-4.columns
+        = url.date
+
+
+%fieldset.fieldset
+  %legend
+    = t('discography')
+  - @band.albums.order(:date).each do |album|
+    .row
+      .small-16.columns
+        = link_to album.name, album
+      .small-8.columns
+        = album.date
+
+%fieldset.fieldset
+  %legend
+    = t('related_bands')
+  - @band.related_bands.each do |band|
+    .row
+      .small-24.columns
+        = link_to band.name, band
+
+%br
 .row
   .small-24.columns
     = link_to t('edit'), edit_band_path(@band), :class => 'button'

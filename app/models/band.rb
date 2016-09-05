@@ -36,6 +36,12 @@ class Band < ActiveRecord::Base
 
   validates_presence_of :name
 
+
+  def related_bands
+    Band.joins(:band_musicians).where('bands.id != ?', id).
+      where('band_musicians.musician_id' => musician_ids).uniq
+  end
+
   # force friendly_id to update slug
   def should_generate_new_friendly_id?
     slug.blank? || name_changed?
