@@ -5,35 +5,88 @@
   .small-8.columns
     = t('activerecord.attributes.album.album_type')
   .small-16.columns
-    = @album.album_type
+    = @album.album_type.try(:name)
 .row
   .small-8.columns
     = t('activerecord.attributes.album.date')
   .small-16.columns
-    = @album.date
+    = @album.date.try(:year)
 .row
   .small-8.columns
     = t('activerecord.attributes.album.end_date')
   .small-16.columns
-    = @album.end_date
-
+    = @album.end_date.try(:year)
 .row
-  .small-24.columns
-    - @album.album_tracks.each do |tracklist|
-      %p
+  .small-8.columns
+    = t('activerecord.attributes.album.genres')
+  .small-16.columns
+    = @album.genres.pluck(:name).join(', ')
+
+%fieldset.fieldset
+  %legend
+    = t('album_covers')
+  .row
+    .small-24.columns
+      - @album.album_covers.each do |photo|
+        - reveal_id = "image_reveal_#{photo.id}"
+        %a{'data-open' => reveal_id}
+          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+        .reveal{:id => reveal_id, 'data-reveal' => ''}
+          .text_italic
+            = photo.name
+          = image_tag photo.image.url(:original)
+          %button.close-button{'data-close' => '', 'aria-label' => t('close')}
+            %span{'aria-hidden' => 'true'}
+              &times;
+
+%fieldset.fieldset
+  %legend
+    = t('musicians')
+  - @album.album_musicians.each do |album_musician|
+    - musician = album_musician.musician
+    .row
+      .small-12.columns
+        = link_to musician.name, musician
+        - if album_musician.is_guest
+          (
+          = t('guest')
+          )
+      .small-12.columns
+        = album_musician.instrument
+
+
+%fieldset.fieldset
+  %legend
+    = t('tracks')
+  - @album.album_tracks.each do |tracklist|
+    .row
+      .small-24.columns
         %b
-          = t('tracks')
+          = tracklist.name
+    .row
+      .small-24.columns
         %table
           %tbody
-            - tracklist.tracks.each do |name, musician, time|
+            - tracklist.tracks.each_with_index do |(name, time), ix|
               %tr
                 %td
-                  = name
+                  = ix
                 %td
                   = time
                 %td
-                  = musician
+                  = name
+%br
+- @album.album_comments.each do |comment|
+  .row
+    .small-8.columns
+      %b
+        = comment.user.name
+    .small-8.columns
+      = comment.comment
+    .small-8.columns
+      = format_time(comment.created_at)
 
+%br
 .row
   .small-24.columns
     = link_to t('edit'), edit_album_path(@album), :class => 'button'

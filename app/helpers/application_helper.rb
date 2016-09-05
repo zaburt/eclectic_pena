@@ -13,5 +13,22 @@ module ApplicationHelper
   #   super *[collection_or_options, options].compact
   # end
 
+  def fonticon(iconname, customclass = '')
+    # haml_tag :i, :class => "fi-#{iconname} #{customclass} fonticon"
+    "<i class='fi-#{iconname} #{customclass} fonticon'></i>".html_safe
+  end
+
+  def format_time(timeval, timeformat = :no_tz_no_sec)
+    return nil if timeval.blank?
+
+    timeval.to_s(timeformat)
+  end
+
+  def format_hashtag(tags)
+    return '' if tags.blank?
+    tags.map{|k| "##{k}"}.join(' ')
+  end
+
+
 end
 

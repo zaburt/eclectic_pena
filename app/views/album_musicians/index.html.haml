@@ -14,8 +14,8 @@
   %tbody
     - @album_musicians.each do |album_musician|
       %tr
-        %td= album_musician.album
-        %td= album_musician.musician
+        %td= album_musician.album.name
+        %td= album_musician.musician.name
         %td= album_musician.instrument
         %td= album_musician.is_guest
         %td= link_to 'Show', album_musician

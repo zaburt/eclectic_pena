@@ -47,7 +47,8 @@ namespace :eclectic_pena do
         end
 
         tracks = ent.xpath('.//tracks/track').map do |track|
-          track.xpath('./column').map(&:text)
+          track_data = track.xpath('./column').map(&:text)
+          [track_data[0], track_data[2]]
         end
 
         all_artists += artists
