@@ -13,6 +13,11 @@
     = @musician.country_name
 .row
   .small-8.columns
+    = t('activerecord.attributes.musician.website')
+  .small-16.columns
+    = @musician.website
+.row
+  .small-8.columns
     = t('activerecord.attributes.musician.biography')
   .small-16.columns.small-offset-1
     %article
