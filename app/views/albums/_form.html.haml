@@ -4,8 +4,8 @@
   .form-inputs
     = f.input :name
     = f.association :album_type
-    = f.input :date
-    = f.input :end_date
+    = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
+    = f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'

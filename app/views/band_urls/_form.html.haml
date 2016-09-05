@@ -5,7 +5,7 @@
     = f.input :url
     = f.association :band
     = f.input :description
-    = f.input :date
+    = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'
