@@ -73,12 +73,16 @@
 %fieldset.fieldset
   %legend
     = t('discography')
-  - @band.albums.order(:date).each do |album|
-    .row
-      .small-8.columns
-        = album.date.try(:year)
-      .small-16.columns
-        = link_to album.name, album
+  .small-24.columns
+    .row.small-up-1.medium-up-2.large-up-4
+      - @band.albums.order(:date).each do |album|
+        - photo = album.album_covers.first
+        .column
+          - if photo
+            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+          = link_to album.name, album
+          .text_italic
+            = album.date.try(:year)
 
 %fieldset.fieldset
   %legend
