@@ -1,28 +1,36 @@
 .row
   .small-24.columns.page_top
     = @band.name
+
 .row
-  .small-8.columns
-    = t('activerecord.attributes.band.country')
-  .small-16.columns
-    = @band.country_name
-.row
-  .small-8.columns
-    = t('activerecord.attributes.band.website')
-  .small-16.columns
-    - if @band.website
-      = link_to @band.website
-.row
-  .small-8.columns
-    = t('genres')
-  .small-16.columns
-    = @band.genres.pluck(:name).join(', ')
-.row
-  .small-8.columns
-    = t('activerecord.attributes.band.biography')
-  .small-16.columns.small-offset-1
-    %article
-      = simple_format(@band.biography, {}, :sanitize => false)
+  .small-24.large-8.columns
+    - photo = @band.band_photos.first
+    - if photo
+      = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+  .small-24.large-16.columns
+    .row
+      .small-8.columns
+        = t('activerecord.attributes.band.country')
+      .small-16.columns
+        = @band.country_name
+    .row
+      .small-8.columns
+        = t('activerecord.attributes.band.website')
+      .small-16.columns
+        - if @band.website
+          = link_to @band.website
+    .row
+      .small-8.columns
+        = t('genres')
+      .small-16.columns
+        = @band.genres.pluck(:name).join(', ')
+    .row
+      .small-8.columns
+        = t('activerecord.attributes.band.biography')
+      .small-16.columns.small-offset-1
+        %article
+          = simple_format(@band.biography, {}, :sanitize => false)
+
 %br
 
 %fieldset.fieldset
