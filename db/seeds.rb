@@ -18,4 +18,12 @@ USERS.each do |email, name, display_name, default_pass|
   )
 end
 
+[
+  'Studio',
+  'Live',
+  'EP',
+  'Compilation'
+].each do |album_type|
+  AlbumType.create(:name => album_type)
+end
 
