@@ -24,6 +24,7 @@ class Album < ActiveRecord::Base
   has_paper_trail :class_name => 'AlbumVersion'
 
   belongs_to :album_type
+  belongs_to :band
 
   has_many :album_comments
   has_many :album_covers
@@ -34,8 +35,6 @@ class Album < ActiveRecord::Base
   has_many :album_musicians
   has_many :musicians, -> {order(:name)}, :through => :album_musicians, :dependent => :destroy
   has_many :album_tracks
-
-  has_one :band
 
   validates_presence_of :name
 

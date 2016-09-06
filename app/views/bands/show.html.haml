@@ -10,7 +10,8 @@
   .small-8.columns
     = t('activerecord.attributes.band.website')
   .small-16.columns
-    = link_to @band.website
+    - if @band.website
+      = link_to @band.website
 .row
   .small-8.columns
     = t('genres')
@@ -72,10 +73,10 @@
     = t('discography')
   - @band.albums.order(:date).each do |album|
     .row
+      .small-8.columns
+        = album.date.try(:year)
       .small-16.columns
         = link_to album.name, album
-      .small-8.columns
-        = album.date
 
 %fieldset.fieldset
   %legend

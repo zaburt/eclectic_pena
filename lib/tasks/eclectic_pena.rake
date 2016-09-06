@@ -107,17 +107,18 @@ namespace :eclectic_pena do
 
       puts "creating #{all_albums.count} albums"
       all_albums.each do |title, data|
-        album = Album.create(
+        band_id = band_ids[data[:artists].first]
+
+        album_args = {
           :name => title,
           :date => "#{data[:year]}-01-01"
-        )
+        }
+
+        album_args.merge!(:band_id => band_id) if band_id.present?
+        album = Album.create(album_args)
 
         data[:genres].each do |genre|
           AlbumGenre.create(:album_id => album.id, :genre_id => genre_ids[genre]) if genre.present?
-        end
-
-        data[:artists].each do |artist|
-          BandAlbum.create(:album_id => album.id, :band_id => band_ids[artist]) if artist.present?
         end
 
         AlbumTrack.create(:album_id => album.id, :tracks => data[:tracks]) if data[:tracks].present?

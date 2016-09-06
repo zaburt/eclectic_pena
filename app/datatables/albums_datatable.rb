@@ -13,6 +13,7 @@ class AlbumsDatatable < ServerSideDatatables
       [
         link_to(album.name, album),
         album.album_type.try(:name),
+        album.band ? link_to(album.band.name, album.band) : '',
         album.date,
         album.end_date,
         # link_to('Show', album),
@@ -26,6 +27,7 @@ class AlbumsDatatable < ServerSideDatatables
     [
       'name',
       'album_type_id',
+      'band_id',
       'date',
       'end_date',
       # '',

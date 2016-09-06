@@ -8,6 +8,12 @@
     = @album.album_type.try(:name)
 .row
   .small-8.columns
+    = t('activerecord.attributes.album.band')
+  .small-16.columns
+    - if @album.band
+      = link_to @album.band.name, @album.band
+.row
+  .small-8.columns
     = t('activerecord.attributes.album.date')
   .small-16.columns
     = @album.date.try(:year)
