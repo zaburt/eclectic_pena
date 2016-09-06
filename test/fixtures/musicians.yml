@@ -6,6 +6,7 @@
 #  name       :string
 #  birthdate  :date
 #  country    :string
+#  website    :string
 #  biography  :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -275,6 +275,7 @@ ActiveRecord::Schema.define(version: 20160823212837) do
     t.string   "name"
     t.date     "birthdate"
     t.string   "country"
+    t.string   "website"
     t.text     "biography"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
