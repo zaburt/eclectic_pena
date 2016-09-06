@@ -15,13 +15,50 @@
   .small-8.columns
     = t('activerecord.attributes.musician.website')
   .small-16.columns
-    = @musician.website
+    - if @musician.website
+      = link_to @musician.website
 .row
   .small-8.columns
     = t('activerecord.attributes.musician.biography')
   .small-16.columns.small-offset-1
     %article
       = simple_format(@musician.biography, {}, :sanitize => false)
+
+%fieldset.fieldset
+  %legend
+    = t('musician_photos')
+  .row
+    .small-24.columns
+      - @musician.musician_photos.each do |photo|
+        - reveal_id = "image_reveal_#{photo.id}"
+        %a{'data-open' => reveal_id}
+          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+        .reveal{:id => reveal_id, 'data-reveal' => ''}
+          .text_italic
+            = photo.name
+          = image_tag photo.image.url(:original)
+          %button.close-button{'data-close' => '', 'aria-label' => t('close')}
+            %span{'aria-hidden' => 'true'}
+              &times;
+
+
+%fieldset.fieldset
+  %legend
+    = t('bands')
+  - @musician.bands.each do |band|
+    .row
+      .small-24.columns
+        = link_to band.name, band
+
+%fieldset.fieldset
+  %legend
+    = t('discography')
+  - @musician.albums.each do |album|
+    .row
+      .small-16.columns
+        = link_to album.name, album
+      .small-8.columns
+        = album.date
 
 .row
   .small-24.columns

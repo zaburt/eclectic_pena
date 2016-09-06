@@ -27,6 +27,8 @@ class Musician < ActiveRecord::Base
   has_many :musician_labels, -> {order(:name)}, :through => :musician_labels_musicians, :dependent => :destroy
   has_many :band_musicians
   has_many :bands, -> {order(:name)}, :through => :band_musicians, :dependent => :destroy
+  has_many :album_musicians
+  has_many :albums, -> {order(:name)}, :through => :album_musicians, :dependent => :destroy
 
   validates_presence_of :name
 
