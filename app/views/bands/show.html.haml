@@ -25,35 +25,37 @@
       = simple_format(@band.biography, {}, :sanitize => false)
 %br
 
-- if @band.band_photos.any?
-  %fieldset.fieldset
-    %legend
-      = t('band_photos')
-    .row
-      .small-24.columns
-        - @band.band_photos.each do |photo|
-          - reveal_id = "image_reveal_#{photo.id}"
-          %a{'data-open' => reveal_id}
-            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
-          .reveal{:id => reveal_id, 'data-reveal' => ''}
-            .text_italic
-              = photo.name
-            = image_tag photo.image.url(:original)
-            %button.close-button{'data-close' => '', 'aria-label' => t('close')}
-              %span{'aria-hidden' => 'true'}
-                &times;
+%fieldset.fieldset
+  %legend
+    = t('band_photos')
+  .row
+    .small-24.columns
+      - @band.band_photos.each do |photo|
+        - reveal_id = "image_reveal_#{photo.id}"
+        %a{'data-open' => reveal_id}
+          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+        .reveal{:id => reveal_id, 'data-reveal' => ''}
+          .text_italic
+            = photo.name
+          = image_tag photo.image.url(:original)
+          %button.close-button{'data-close' => '', 'aria-label' => t('close')}
+            %span{'aria-hidden' => 'true'}
+              &times;
 
 %fieldset.fieldset
   %legend
     = t('band_musicians')
-  - @band.band_musicians.each do |band_musician|
-    .row
-      .small-16.columns
-        = link_to band_musician.musician.name, band_musician.musician
-      .small-4.columns
-        = band_musician.since
-      .small-4.columns
-        = band_musician.current ? '-' : band_musician.until
+  .small-24.columns
+    .row.small-up-1.medium-up-2.large-up-4
+      - @band.band_musicians.each do |band_musician|
+        - photo = band_musician.musician.musician_photos.first
+        .column
+          - if photo
+            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+          = link_to band_musician.musician.name, band_musician.musician
+          .text_italic
+            - until_str = band_musician.current ? '' : band_musician.until
+            = "#{band_musician.since} - #{until_str}"
 
 %fieldset.fieldset
   %legend
