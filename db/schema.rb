@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20160823212837) do
   create_table "albums", force: :cascade do |t|
     t.string   "name"
     t.integer  "album_type_id"
+    t.integer  "band_id"
     t.date     "date"
     t.date     "end_date"
     t.datetime "created_at",    null: false
@@ -121,17 +122,8 @@ ActiveRecord::Schema.define(version: 20160823212837) do
   end
 
   add_index "albums", ["album_type_id"], name: "index_albums_on_album_type_id", using: :btree
+  add_index "albums", ["band_id"], name: "index_albums_on_band_id", using: :btree
   add_index "albums", ["slug"], name: "index_albums_on_slug", unique: true, using: :btree
-
-  create_table "band_albums", force: :cascade do |t|
-    t.integer  "band_id"
-    t.integer  "album_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "band_albums", ["album_id"], name: "index_band_albums_on_album_id", using: :btree
-  add_index "band_albums", ["band_id"], name: "index_band_albums_on_band_id", using: :btree
 
   create_table "band_genres", force: :cascade do |t|
     t.integer  "band_id"
@@ -314,8 +306,7 @@ ActiveRecord::Schema.define(version: 20160823212837) do
   add_foreign_key "album_musicians", "musicians"
   add_foreign_key "album_tracks", "albums"
   add_foreign_key "albums", "album_types"
-  add_foreign_key "band_albums", "albums"
-  add_foreign_key "band_albums", "bands"
+  add_foreign_key "albums", "bands"
   add_foreign_key "band_genres", "bands"
   add_foreign_key "band_genres", "genres"
   add_foreign_key "band_labels_bands", "band_labels"

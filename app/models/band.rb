@@ -26,9 +26,8 @@ class Band < ActiveRecord::Base
   has_many :band_photos
   has_many :band_urls
   has_many :band_genres
+  has_many :albums, -> {order(:name)}, :dependent => :destroy
   has_many :genres, -> {order(:name)}, :through => :band_genres, :dependent => :destroy
-  has_many :band_albums
-  has_many :albums, -> {order(:name)}, :through => :band_albums, :dependent => :destroy
   has_many :band_musicians
   has_many :musicians, -> {order(:name)}, :through => :band_musicians, :dependent => :destroy
   has_many :band_labels_bands

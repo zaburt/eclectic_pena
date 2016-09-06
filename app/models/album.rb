@@ -35,8 +35,7 @@ class Album < ActiveRecord::Base
   has_many :musicians, -> {order(:name)}, :through => :album_musicians, :dependent => :destroy
   has_many :album_tracks
 
-  has_one :band_album
-  has_one :band, :through => :band_album
+  has_one :band
 
   validates_presence_of :name
 
