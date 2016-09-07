@@ -1,21 +1,25 @@
-%h1 Listing genres
+.row
+  .small-24.columns.page_top
+    = t('genres')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table#genres_table.serverside_datatables{'data-source' => genres_path}
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.genre.name')
+          %th.datatable_no_search.datatable_no_order
+          %th.datatable_no_search.datatable_no_order
 
-  %tbody
-    - @genres.each do |genre|
-      %tr
-        %td= genre.name
-        %td= link_to 'Show', genre
-        %td= link_to 'Edit', edit_genre_path(genre)
-        %td= link_to 'Destroy', genre, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+      /  - @genres.each do |genre|
+      /    %tr
+      /      %td= genre.name
+      /      %td= link_to 'Edit', edit_genre_path(genre)
+      /      %td= link_to 'Destroy', genre, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+    %br
 
-= link_to 'New Genre', new_genre_path
+    = link_to t('generic.new_model', :name => Genre.model_name.human), new_genre_path, :class => 'button'
+

@@ -3,7 +3,12 @@ class GenresController < ApplicationController
 
   # GET /genres
   def index
-    @genres = Genre.all
+    # @genres = Genre.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: GenresDatatable.new(Genre, view_context) }
+    end
   end
 
   # GET /genres/1
