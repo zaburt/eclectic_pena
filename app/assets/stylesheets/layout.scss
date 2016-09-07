@@ -45,6 +45,10 @@
   box-shadow: 0px 5px 5px -2px rgba(0, 0, 0, 0.5);
   // background-image: linear-gradient(#8add6d, #60b044);
   background: linear-gradient(#9d76d2, #604586);
+
+  &:hover {
+    background: linear-gradient(#604586, #9d76d2);
+  }
 }
 
 /*
