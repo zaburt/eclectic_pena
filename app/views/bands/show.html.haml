@@ -1,6 +1,7 @@
 .row
   .small-24.columns.page_top
     = @band.name
+    /= link_to 'Edit', edit_band_path(@band), :class => 'float-right white'
 
 .row
   .small-24.large-8.columns
@@ -104,5 +105,4 @@
 .row
   .small-24.columns
     = link_to t('edit'), edit_band_path(@band), :class => 'button'
-    = link_to t('back'), bands_path, :class => 'button'
 

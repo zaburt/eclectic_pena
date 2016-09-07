@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.association :musician
+    = f.association :musician, :selected => @musician_id
     = f.input :image, :as => :file
 
   .form-actions.float-right

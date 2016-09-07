@@ -1,15 +1,23 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @musician_photo.name)
 
-%p
-  %b Name:
-  = @musician_photo.name
-%p
-  %b Musician:
-  = @musician_photo.musician
-%p
-  %b Image:
-  = image_tag @musician_photo.image.url
+.row
+  .small-24.columns
+    = @musician_photo.name
 
-= link_to 'Edit', edit_musician_photo_path(@musician_photo)
-\|
-= link_to 'Back', musician_photos_path
+.row
+  .small-24.columns
+    = link_to @musician_photo.musician.name, @musician_photo.musician
+
+%br
+.row
+  .small-24.columns
+    = image_tag @musician_photo.image.url
+
+%br
+.row
+  .small-24.columns
+    = link_to 'Edit', edit_musician_photo_path(@musician_photo), :class => 'button'
+    = link_to t('destroy'), @musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

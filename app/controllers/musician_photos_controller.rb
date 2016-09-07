@@ -12,6 +12,7 @@ class MusicianPhotosController < ApplicationController
 
   # GET /musician_photos/new
   def new
+    @musician_id = params[:musician_id]
     @musician_photo = MusicianPhoto.new
   end
 

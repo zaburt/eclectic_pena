@@ -10,10 +10,10 @@ class MusiciansDatatable < ServerSideDatatables
         link_to(musician.name, musician),
         musician.birthdate,
         musician.country_name,
-        link_to(musician.website),
+        link_to(musician.website)
         # link_to('Show', musician),
-        link_to('Edit', edit_musician_path(musician)),
-        link_to('Destroy', musician, :method => :delete, :data => { :confirm => 'Are you sure?' })
+        # link_to('Edit', edit_musician_path(musician)),
+        # link_to('Destroy', musician, :method => :delete, :data => { :confirm => 'Are you sure?' })
       ]
     end
   end
@@ -23,10 +23,10 @@ class MusiciansDatatable < ServerSideDatatables
       'name',
       'birthdate',
       'country',
-      'website',
+      'website'
       # '',
-      '',
-      ''
+      # '',
+      # ''
     ]
   end
 
