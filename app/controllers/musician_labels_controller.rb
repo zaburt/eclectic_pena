@@ -12,6 +12,7 @@ class MusicianLabelsController < ApplicationController
 
   # GET /musician_labels/new
   def new
+    @musician_id = params[:musician_id]
     @musician_label = MusicianLabel.new
   end
 
