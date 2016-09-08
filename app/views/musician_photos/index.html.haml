@@ -1,23 +1,29 @@
-%h1 Listing musician_photos
+.row
+  .small-24.columns.page_top
+    = t('musician_photos')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Musician
-      %th
-      %th
-      %th
 
-  %tbody
-    - @musician_photos.each do |musician_photo|
-      %tr
-        %td= musician_photo.name
-        %td= musician_photo.musician
-        %td= link_to 'Show', musician_photo
-        %td= link_to 'Edit', edit_musician_photo_path(musician_photo)
-        %td= link_to 'Destroy', musician_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+.row
+  .small-24.columns
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Musician
+          %th
+          %th
+          %th
 
-%br
+      %tbody
+        - @musician_photos.each do |musician_photo|
+          %tr
+            %td= musician_photo.name
+            %td= musician_photo.musician.try(:name)
+            %td= link_to t('show'), musician_photo
+            %td= link_to t('edit'), edit_musician_photo_path(musician_photo)
+            %td= link_to t('delete'), musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-= link_to 'New Musician photo', new_musician_photo_path
+    %br
+
+    = link_to t('generic.new_model', :name => MusicianPhoto.model_name.human), new_musician_photo_path, :class => 'button'
+

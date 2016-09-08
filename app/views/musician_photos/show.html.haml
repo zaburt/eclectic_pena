@@ -18,6 +18,6 @@
 %br
 .row
   .small-24.columns
-    = link_to 'Edit', edit_musician_photo_path(@musician_photo), :class => 'button'
-    = link_to t('destroy'), @musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+    = link_to t('edit'), edit_musician_photo_path(@musician_photo), :class => 'button'
+    = link_to t('delete'), @musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
 
