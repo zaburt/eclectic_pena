@@ -2,14 +2,15 @@
   .small-24.columns.page_top
     = t('musician_photos')
 
-
 .row
   .small-24.columns
     %table
       %thead
         %tr
-          %th Name
-          %th Musician
+          %th
+            = t('activerecord.attributes.musician_photo.name')
+          %th
+            = t('activerecord.attributes.musician_photo.musician')
           %th
           %th
           %th

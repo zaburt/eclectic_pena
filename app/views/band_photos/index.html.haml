@@ -1,23 +1,30 @@
-%h1 Listing band_photos
+.row
+  .small-24.columns.page_top
+    = t('band_photos')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Band
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.band_photo.name')
+          %th
+            = t('activerecord.attributes.band_photo.band')
+          %th
+          %th
+          %th
 
-  %tbody
-    - @band_photos.each do |band_photo|
-      %tr
-        %td= band_photo.name
-        %td= band_photo.band
-        %td= link_to 'Show', band_photo
-        %td= link_to 'Edit', edit_band_photo_path(band_photo)
-        %td= link_to 'Destroy', band_photo, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @band_photos.each do |band_photo|
+          %tr
+            %td= band_photo.name
+            %td= band_photo.band.try(:name)
+            %td= link_to t('show'), band_photo
+            %td= link_to t('edit'), edit_band_photo_path(band_photo)
+            %td= link_to t('destroy'), band_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-%br
+    %br
 
-= link_to 'New Band photo', new_band_photo_path
+    = link_to t('generic.new_model', :name => BandPhoto.model_name.human), new_band_photo_path, :class => 'button'
+

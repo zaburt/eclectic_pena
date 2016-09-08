@@ -8,6 +8,7 @@
 
 .row
   .small-24.columns
-    = link_to t('show'), @band, :class => 'button'
-    = link_to t('back'), bands_path, :class => 'button'
+    = link_to t('cancel'), @band, :class => 'button'
+    = link_to t('add_image'), new_band_photo_path(:band_id => @band.id), :class => 'button'
+    = link_to t('delete'), @band, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
 

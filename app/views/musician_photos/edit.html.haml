@@ -9,6 +9,5 @@
 .row
   .small-24.columns
     = link_to t('cancel'), @musician_photo, :class => 'button'
-    /= link_to t('musicians'), musicians_path, :class => 'button'
     = link_to t('delete'), @musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
 
