@@ -1,5 +1,12 @@
-%h1 New band_musician
+.row
+  .small-24.columns.page_top
+    = t('generic.new_model', :name => BandMusician.model_name.human)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Back', band_musicians_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), band_musicians_path, :class => 'button'
+

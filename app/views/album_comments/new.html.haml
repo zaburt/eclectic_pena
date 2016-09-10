@@ -1,5 +1,12 @@
-%h1 New album_comment
+.row
+  .small-24.columns.page_top
+    = t('generic.new_model', :name => AlbumComment.model_name.human)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Back', album_comments_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), album_comments_path, :class => 'button'
+
