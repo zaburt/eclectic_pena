@@ -1,0 +1,12 @@
+.row
+  .small-24.columns.page_top
+    = t('generic.new_model', :name => User.model_name.human)
+
+.row
+  .small-24.columns
+    = render 'form'
+
+.row
+  .small-24.columns
+    = link_to t('cancel'), users_path, :class => 'button'
+

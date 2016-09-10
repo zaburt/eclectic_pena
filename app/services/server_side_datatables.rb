@@ -1,6 +1,6 @@
 # super class for server side datatables
 class ServerSideDatatables
-  delegate :params, :h, :t, :raw, :link_to, :number_to_currency, :to => :@view
+  delegate :params, :h, :t, :raw, :link_to, :number_to_currency, :format_time, :to => :@view
 
   ASC = 'asc'
   DESC = 'desc'

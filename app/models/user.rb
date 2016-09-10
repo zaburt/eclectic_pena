@@ -24,8 +24,24 @@
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, :use => :slugged
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  # force friendly_id to update slug
+  def should_generate_new_friendly_id?
+    slug.blank? || name_changed?
+  end
+
+  def country_name
+    return '' if country.blank?
+    country_obj = ISO3166::Country[country]
+    country_obj.translations[I18n.locale.to_s] || country_obj.name
+  end
+
 end
+

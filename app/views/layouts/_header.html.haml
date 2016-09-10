@@ -56,6 +56,8 @@
                 = link_to t('musician_photos'), musician_photos_path
           %li
             = link_to t('genres'), genres_path
+          %li
+            = link_to t('users'), users_path
       .top-bar-right
         %ul.menu.vertical.medium-horizontal
           - if signed_in?
