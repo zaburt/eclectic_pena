@@ -8,9 +8,9 @@
       %thead
         %tr
           %th
-            = t('activerecord.attributes.band_musician.band')
-          %th
             = t('activerecord.attributes.band_musician.musician')
+          %th
+            = t('activerecord.attributes.band_musician.band')
           %th
             = t('activerecord.attributes.band_musician.since')
           %th
@@ -24,8 +24,8 @@
       %tbody
         - @band_musicians.each do |band_musician|
           %tr
-            %td= link_to band_musician.band.name, band_musician.band
             %td= link_to band_musician.musician.name, band_musician.musician
+            %td= link_to band_musician.band.name, band_musician.band
             %td= band_musician.since
             %td= band_musician.until
             %td= band_musician.current
