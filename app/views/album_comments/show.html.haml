@@ -1,7 +1,6 @@
 .row
   .small-24.columns.page_top
-    = @album_comment.album.name
-    = @album_comment.created_at
+    = AlbumComment.model_name.human
 
 .row
   .small-8.columns
@@ -13,6 +12,11 @@
     = t('activerecord.attributes.album_comment.user')
   .small-16.columns
     = @album_comment.user.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_comment.created_at')
+  .small-16.columns
+    = format_time(@album_comment.created_at)
 .row
   .small-8.columns
     = t('activerecord.attributes.album_comment.publish')
