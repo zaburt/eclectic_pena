@@ -1,18 +1,31 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @band_url.band.name
 
-%p
-  %b Url:
-  = @band_url.url
-%p
-  %b Band:
-  = @band_url.band
-%p
-  %b Description:
-  = @band_url.description
-%p
-  %b Date:
-  = @band_url.date
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_url.band')
+  .small-16.columns
+    = link_to @band_url.band.name, @band_url.band
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_url.url')
+  .small-16.columns
+    = link_to @band_url.url
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_url.date')
+  .small-16.columns
+    = @band_url.date
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_url.description')
+  .small-16.columns
+    = @band_url.description
 
-= link_to 'Edit', edit_band_url_path(@band_url)
-\|
-= link_to 'Back', band_urls_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_band_url_path(@band_url), :class => 'button'
+    = link_to t('delete'), @band_url, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

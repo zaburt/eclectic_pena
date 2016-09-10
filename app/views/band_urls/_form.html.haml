@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :url
-    = f.association :band
+    = f.association :band, :selected => @band_id
     = f.input :description
     = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
 

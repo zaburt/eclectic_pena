@@ -12,6 +12,7 @@ class BandUrlsController < ApplicationController
 
   # GET /band_urls/new
   def new
+    @band_id = params[:band_id]
     @band_url = BandUrl.new
   end
 

@@ -1,27 +1,36 @@
-%h1 Listing band_urls
+.row
+  .small-24.columns.page_top
+    = t('band_urls')
 
-%table
-  %thead
-    %tr
-      %th Url
-      %th Band
-      %th Description
-      %th Date
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.band_url.band')
+          %th
+            = t('activerecord.attributes.band_url.url')
+          %th
+            = t('activerecord.attributes.band_url.description')
+          %th
+            = t('activerecord.attributes.band_url.date')
+          %th
+          %th
+          %th
 
-  %tbody
-    - @band_urls.each do |band_url|
-      %tr
-        %td= band_url.url
-        %td= band_url.band
-        %td= band_url.description
-        %td= band_url.date
-        %td= link_to 'Show', band_url
-        %td= link_to 'Edit', edit_band_url_path(band_url)
-        %td= link_to 'Destroy', band_url, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @band_urls.each do |band_url|
+          %tr
+            %td= band_url.band.name
+            %td= link_to band_url.url
+            %td= band_url.description
+            %td= band_url.date
+            %td= link_to t('show'), band_url
+            %td= link_to t('edit'), edit_band_url_path(band_url)
+            %td= link_to t('destroy'), band_url, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-%br
+    %br
 
-= link_to 'New Band url', new_band_url_path
+    = link_to t('generic.new_model', :name => BandUrl.model_name.human), new_band_url_path, :class => 'button'
+
