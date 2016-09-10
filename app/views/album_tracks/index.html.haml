@@ -1,25 +1,33 @@
-%h1 Listing album_tracks
+.row
+  .small-24.columns.page_top
+    = t('album_tracks')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Album
-      %th Tracks
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table#albums_tracks_table.serverside_datatables{'data-source' => album_tracks_path}
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.album_track.name')
+          %th.datatable_no_search
+            = t('activerecord.attributes.album_track.album')
+          %th.datatable_no_search
+            = t('activerecord.attributes.album_track.tracks')
+          /%th.datatable_no_search.datatable_no_order
+          %th.datatable_no_search.datatable_no_order
+          %th.datatable_no_search.datatable_no_order
 
-  %tbody
-    - @album_tracks.each do |album_track|
-      %tr
-        %td= album_track.name
-        %td= album_track.album
-        %td= album_track.tracks
-        %td= link_to 'Show', album_track
-        %td= link_to 'Edit', edit_album_track_path(album_track)
-        %td= link_to 'Destroy', album_track, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+      /  - @album_tracks.each do |album_track|
+      /    %tr
+      /      %td= album_track.name
+      /      %td= link_to album_track.album, album_track.album.name
+      /      %td= album_track.tracks
+      /      %td= link_to t('show'), album_track
+      /      %td= link_to t('edit'), edit_album_track_path(album_track)
+      /      %td= link_to t('destroy'), album_track, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-%br
+    %br
 
-= link_to 'New Album track', new_album_track_path
+    = link_to t('generic.new_model', :name => AlbumTrack.model_name.human), new_album_track_path, :class => 'button'
+

@@ -1,27 +1,36 @@
-%h1 Listing album_musicians
+.row
+  .small-24.columns.page_top
+    = t('album_musicians')
 
-%table
-  %thead
-    %tr
-      %th Album
-      %th Musician
-      %th Instrument
-      %th Is guest
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.album_musician.album')
+          %th
+            = t('activerecord.attributes.album_musician.musician')
+          %th
+            = t('activerecord.attributes.album_musician.instrument')
+          %th
+            = t('activerecord.attributes.album_musician.is_guest')
+          %th
+          %th
+          %th
 
-  %tbody
-    - @album_musicians.each do |album_musician|
-      %tr
-        %td= album_musician.album.name
-        %td= album_musician.musician.name
-        %td= album_musician.instrument
-        %td= album_musician.is_guest
-        %td= link_to 'Show', album_musician
-        %td= link_to 'Edit', edit_album_musician_path(album_musician)
-        %td= link_to 'Destroy', album_musician, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @album_musicians.each do |album_musician|
+          %tr
+            %td= link_to album_musician.album, album_musician.album.name
+            %td= link_to album_musician.musician, album_musician.musician.name
+            %td= album_musician.instrument
+            %td= album_musician.is_guest
+            %td= link_to t('show'), album_musician
+            %td= link_to t('edit'), edit_album_musician_path(album_musician)
+            %td= link_to t('destroy'), album_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-%br
+    %br
 
-= link_to 'New Album musician', new_album_musician_path
+    = link_to t('generic.new_model', :name => AlbumMusician.model_name.human), new_album_musician_path, :class => 'button'
+

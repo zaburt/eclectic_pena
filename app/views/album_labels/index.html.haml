@@ -1,21 +1,27 @@
-%h1 Listing album_labels
+.row
+  .small-24.columns.page_top
+    = t('album_labels')
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
+.row
+  .small-24.columns
+    %table
+      %thead
+        %tr
+          %th
+            = t('activerecord.attributes.album_label.name')
+          %th
+          %th
+          %th
 
-  %tbody
-    - @album_labels.each do |album_label|
-      %tr
-        %td= album_label.name
-        %td= link_to 'Show', album_label
-        %td= link_to 'Edit', edit_album_label_path(album_label)
-        %td= link_to 'Destroy', album_label, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %tbody
+        - @album_labels.each do |album_label|
+          %tr
+            %td= album_label.name
+            %td= link_to t('show'), album_label
+            %td= link_to t('edit'), edit_album_label_path(album_label)
+            %td= link_to t('destroy'), album_label, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
-%br
+    %br
 
-= link_to 'New Album label', new_album_label_path
+    = link_to t('generic.new_model', :name => AlbumLabel.model_name.human), new_album_label_path, :class => 'button'
+
