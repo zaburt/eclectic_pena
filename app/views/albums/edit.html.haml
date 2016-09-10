@@ -8,6 +8,6 @@
 
 .row
   .small-24.columns
-    = link_to t('show'), @album
-    = link_to t('back'), albums_path
+    = link_to t('cancel'), @album, :class => 'button'
+    = link_to t('delete'), @album, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
 

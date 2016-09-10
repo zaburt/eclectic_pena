@@ -1,7 +1,13 @@
-%h1 Editing album_label
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @album_label.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @album_label
-\|
-= link_to 'Back', album_labels_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), @album_label, :class => 'button'
+    = link_to t('delete'), @album_label, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

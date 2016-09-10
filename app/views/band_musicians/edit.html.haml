@@ -1,7 +1,13 @@
-%h1 Editing band_musician
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @band_musician.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @band_musician
-\|
-= link_to 'Back', band_musicians_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), @band_musician, :class => 'button'
+    = link_to t('delete'), @band_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

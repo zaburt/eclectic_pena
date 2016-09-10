@@ -1,7 +1,13 @@
-%h1 Editing album_cover
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @album_cover.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @album_cover
-\|
-= link_to 'Back', album_covers_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), @album_cover, :class => 'button'
+    = link_to t('delete'), @album_cover, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+
