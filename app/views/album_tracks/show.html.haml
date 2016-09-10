@@ -1,15 +1,40 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album_track.name
 
-%p
-  %b Name:
-  = @album_track.name
-%p
-  %b Album:
-  = @album_track.album
-%p
-  %b Tracks:
-  = @album_track.tracks
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_track.name')
+  .small-16.columns
+    = @album_track.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_track.album')
+  .small-16.columns
+    = link_to @album_track.album.name, @album_track.album
 
-= link_to 'Edit', edit_album_track_path(@album_track)
-\|
-= link_to 'Back', album_tracks_path
+%br
+.row
+  .small-24.columns
+    = t('activerecord.attributes.album_track.tracks')
+.row
+  .small-24.columns
+    .row
+      .small-24.columns
+        %table
+          %tbody
+            - @album_track.tracks.each_with_index do |(name, time), ix|
+              %tr
+                %td
+                  = ix
+                %td
+                  = time
+                %td
+                  = name
+
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_track_path(@album_track), :class => 'button'
+    = link_to t('delete'), @album_track, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

@@ -1,9 +1,16 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album_type.name
 
-%p
-  %b Name:
-  = @album_type.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_type.name')
+  .small-16.columns
+    = @album_type.name
 
-= link_to 'Edit', edit_album_type_path(@album_type)
-\|
-= link_to 'Back', album_types_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_type_path(@album_type), :class => 'button'
+    = link_to t('delete'), @album_type, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

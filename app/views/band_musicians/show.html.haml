@@ -1,21 +1,36 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @band_musician.musician.name
 
-%p
-  %b Band:
-  = @band_musician.band
-%p
-  %b Musician:
-  = @band_musician.musician
-%p
-  %b Since:
-  = @band_musician.since
-%p
-  %b Until:
-  = @band_musician.until
-%p
-  %b Current:
-  = @band_musician.current
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_musician.band')
+  .small-16.columns
+    = link_to @band_musician.band.name, @band_musician.band
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_musician.musician')
+  .small-16.columns
+    = link_to @band_musician.musician.name, @band_musician.musician.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_musician.since')
+  .small-16.columns
+    = @band_musician.since
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_musician.until')
+  .small-16.columns
+    = @band_musician.until
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_musician.current')
+  .small-16.columns
+    = @band_musician.current
 
-= link_to 'Edit', edit_band_musician_path(@band_musician)
-\|
-= link_to 'Back', band_musicians_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_band_musician_path(@band_musician), :class => 'button'
+    = link_to t('delete'), @band_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

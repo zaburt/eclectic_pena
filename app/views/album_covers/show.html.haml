@@ -1,15 +1,25 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album_cover.name
 
-%p
-  %b Name:
-  = @album_cover.name
-%p
-  %b Album:
-  = @album_cover.album
-%p
-  %b Image:
-  = image_tag @album_cover.image.url
+.row
+  .small-24.columns
+    = image_tag @album_cover.image.url
 
-= link_to 'Edit', edit_album_cover_path(@album_cover)
-\|
-= link_to 'Back', album_covers_path
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_cover.name')
+  .small-16.columns
+    = @album_cover.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_cover.album')
+  .small-16.columns
+    = link_to @album_cover.album.name, @album_cover.album
+
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_cover_path(@album_cover), :class => 'button'
+    = link_to t('delete'), @album_cover, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

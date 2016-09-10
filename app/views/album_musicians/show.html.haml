@@ -1,18 +1,31 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album_musician.musician.name
 
-%p
-  %b Album:
-  = @album_musician.album
-%p
-  %b Musician:
-  = @album_musician.musician
-%p
-  %b Instrument:
-  = @album_musician.instrument
-%p
-  %b Is guest:
-  = @album_musician.is_guest
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_musician.album')
+  .small-16.columns
+    = link_to @album_musician.album.name, @album_musician.album
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_musician.musician')
+  .small-16.columns
+    = link_to @album_musician.musician.name, @album_musician.musician
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_musician.instrument')
+  .small-16.columns
+    = @album_musician.instrument
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_musician.is_guest')
+  .small-16.columns
+    = @album_musician.is_guest
 
-= link_to 'Edit', edit_album_musician_path(@album_musician)
-\|
-= link_to 'Back', album_musicians_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_musician_path(@album_musician), :class => 'button'
+    = link_to t('delete'), @album_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

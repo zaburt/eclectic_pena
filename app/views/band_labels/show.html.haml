@@ -1,9 +1,16 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @band_label.name
 
-%p
-  %b Name:
-  = @band_label.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.band_label.name')
+  .small-16.columns
+    = @band_label.name
 
-= link_to 'Edit', edit_band_label_path(@band_label)
-\|
-= link_to 'Back', band_labels_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_band_label_path(@band_label), :class => 'button'
+    = link_to t('delete'), @band_label, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

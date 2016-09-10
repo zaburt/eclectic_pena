@@ -1,18 +1,32 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @album_comment.album.name
+    = @album_comment.created_at
 
-%p
-  %b Album:
-  = @album_comment.album
-%p
-  %b User:
-  = @album_comment.user
-%p
-  %b Publish:
-  = @album_comment.publish
-%p
-  %b Comment:
-  = @album_comment.comment
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_comment.album')
+  .small-16.columns
+    = link_to @album_comment.album.name, @album_comment.album
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_comment.user')
+  .small-16.columns
+    = @album_comment.user.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_comment.publish')
+  .small-16.columns
+    = @album_comment.publish
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album_comment.comment')
+  .small-16.columns
+    = @album_comment.comment
 
-= link_to 'Edit', edit_album_comment_path(@album_comment)
-\|
-= link_to 'Back', album_comments_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_album_comment_path(@album_comment), :class => 'button'
+    = link_to t('delete'), @album_comment, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+
