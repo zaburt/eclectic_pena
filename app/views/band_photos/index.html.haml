@@ -8,6 +8,7 @@
       %thead
         %tr
           %th
+          %th
             = t('activerecord.attributes.band_photo.name')
           %th
             = t('activerecord.attributes.band_photo.band')
@@ -18,6 +19,7 @@
       %tbody
         - @band_photos.each do |band_photo|
           %tr
+            %td= image_tag band_photo.image.url(:small), :class => 'small_image'
             %td= band_photo.name
             %td= band_photo.band.try(:name)
             %td= link_to t('show'), band_photo

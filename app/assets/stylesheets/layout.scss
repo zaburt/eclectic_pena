@@ -462,81 +462,11 @@ img.image_selector_picture {
   background-color: white;
 }
 
-.rating_value_1,
-.rating_value_2,
-.rating_value_3, {
-  // background-color: red;
-  background-color: #edb867;
+.small_image {
+  max-height: 100px;
 }
 
-.rating_value_4,
-.rating_value_5,
-.rating_value_6, {
-  // background-color: yellow;
-  background-color: #edb867;
+.medium_image {
+  max-height: 200px;
 }
-
-.rating_value_7,
-.rating_value_8,
-.rating_value_9,
-.rating_value_10, {
-  // background-color: green;
-  background-color: #edb867;
-}
-
-.rating_empty {
-  &.rating_size_normal {
-    background-color: #FBEDD9;
-  }
-
-  &.rating_size_small {
-    background-color: #D7CBBA;
-  }
-}
-
-.rating_bar_wrapper {
-  display: flex;
-
-  .rating_bar {
-    display: block;
-    // float: left;
-    // vertical-align: baseline;
-    text-align: center;
-    white-space: nowrap;
-    margin: 1px;
-
-    &.rating_size_normal {
-      width: 12px;
-      padding: 5px 0;
-      height: 28px;
-    }
-
-    &.rating_size_small {
-      width: 6px;
-      padding: 5px 0;
-      height: 28px;
-    }
-  }
-
-  .rating_number {
-    float: left;
-    color: #CE5700;
-    line-height: 2rem;
-    // font-weight: 400;
-
-    &.rating_size_normal {
-      padding: 0 20px;
-    }
-
-    &.rating_size_small {
-      padding: 0 5px;
-
-      @media screen and (max-width: 950px) {
-        display: none;
-      }
-    }
-  }
-}
-
-
 
