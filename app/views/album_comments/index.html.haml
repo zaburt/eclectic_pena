@@ -28,7 +28,7 @@
             %td= album_comment.comment
             %td= link_to t('show'), album_comment
             %td= link_to t('edit'), edit_album_comment_path(album_comment)
-            %td= link_to t('destroy'), album_comment, :method => :delete, :data => {:confirm => t('are_you_sure')}
+            %td= link_to t('delete'), album_comment, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
     %br
 

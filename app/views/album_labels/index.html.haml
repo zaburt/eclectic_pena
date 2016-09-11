@@ -19,7 +19,7 @@
             %td= album_label.name
             %td= link_to t('show'), album_label
             %td= link_to t('edit'), edit_album_label_path(album_label)
-            %td= link_to t('destroy'), album_label, :method => :delete, :data => {:confirm => t('are_you_sure')}
+            %td= link_to t('delete'), album_label, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
     %br
 

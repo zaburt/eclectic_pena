@@ -31,7 +31,7 @@
             %td= band_musician.current
             %td= link_to t('show'), band_musician
             %td= link_to t('edit'), edit_band_musician_path(band_musician)
-            %td= link_to t('destroy'), band_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}
+            %td= link_to t('delete'), band_musician, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
     %br
 

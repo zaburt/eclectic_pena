@@ -18,14 +18,6 @@
           %th.datatable_no_search.datatable_no_order
 
       %tbody
-      /  - @album_tracks.each do |album_track|
-      /    %tr
-      /      %td= album_track.name
-      /      %td= link_to album_track.album, album_track.album.name
-      /      %td= album_track.tracks
-      /      %td= link_to t('show'), album_track
-      /      %td= link_to t('edit'), edit_album_track_path(album_track)
-      /      %td= link_to t('destroy'), album_track, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
     %br
 
