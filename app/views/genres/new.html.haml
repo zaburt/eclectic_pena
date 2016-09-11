@@ -1,5 +1,12 @@
-%h1 New genre
+.row
+  .small-24.columns.page_top
+    = t('generic.new_model', :name => Genre.model_name.human)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Back', genres_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), genres_path, :class => 'button'
+

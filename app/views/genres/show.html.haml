@@ -1,9 +1,16 @@
-%p#notice= notice
+.row
+  .small-24.columns.page_top
+    = @genre.name
 
-%p
-  %b Name:
-  = @genre.name
+.row
+  .small-8.columns
+    = t('activerecord.attributes.genre.name')
+  .small-16.columns
+    = @genre.name
 
-= link_to 'Edit', edit_genre_path(@genre)
-\|
-= link_to 'Back', genres_path
+%br
+.row
+  .small-24.columns
+    = link_to t('edit'), edit_genre_path(@genre), :class => 'button'
+    = link_to t('delete'), @genre, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+

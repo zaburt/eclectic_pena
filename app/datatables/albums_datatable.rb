@@ -17,8 +17,8 @@ class AlbumsDatatable < ServerSideDatatables
         album.date.try(:year),
         album.end_date.try(:year),
         # link_to('Show', album),
-        link_to('Edit', edit_album_path(album)),
-        link_to('Destroy', album, :method => :delete, :data => {:confirm => 'Are you sure?'})
+        link_to(t('edit'), edit_album_path(album)),
+        link_to(t('destroy'), album, :method => :delete, :data => {:confirm => t('are_you_sure')})
       ]
     end
   end

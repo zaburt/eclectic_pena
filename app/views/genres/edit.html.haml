@@ -1,7 +1,13 @@
-%h1 Editing genre
+.row
+  .small-24.columns.page_top
+    = t('generic.editing', :name => @genre.name)
 
-= render 'form'
+.row
+  .small-24.columns
+    = render 'form'
 
-= link_to 'Show', @genre
-\|
-= link_to 'Back', genres_path
+.row
+  .small-24.columns
+    = link_to t('cancel'), @genre, :class => 'button'
+    = link_to t('delete'), @genre, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
+
