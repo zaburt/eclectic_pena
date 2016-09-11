@@ -19,6 +19,11 @@
       = link_to @musician.website
 .row
   .small-8.columns
+    = t('activerecord.attributes.musician.musician_labels')
+  .small-16.columns
+    = @musician.musician_labels.pluck(:name).join(', ')
+.row
+  .small-8.columns
     = t('activerecord.attributes.musician.biography')
   .small-16.columns.small-offset-1
     %article

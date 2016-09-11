@@ -27,6 +27,11 @@
     = t('activerecord.attributes.album.genres')
   .small-16.columns
     = @album.genres.pluck(:name).join(', ')
+.row
+  .small-8.columns
+    = t('activerecord.attributes.album.album_labels')
+  .small-16.columns
+    = @album.album_labels.pluck(:name).join(', ')
 
 %fieldset.fieldset
   %legend

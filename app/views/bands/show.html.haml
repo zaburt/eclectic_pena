@@ -27,6 +27,11 @@
         = @band.genres.pluck(:name).join(', ')
     .row
       .small-8.columns
+        = t('activerecord.attributes.band.band_labels')
+      .small-16.columns
+        = @band.band_labels.pluck(:name).join(', ')
+    .row
+      .small-8.columns
         = t('activerecord.attributes.band.biography')
       .small-16.columns.small-offset-1
         %article

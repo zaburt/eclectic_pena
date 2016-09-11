@@ -6,6 +6,7 @@
     = f.input :country
     = f.input :website
     = f.association :genres, :as => :check_boxes, :label => t('band_genres')
+    = f.association :band_labels, :as => :check_boxes, :label => t('band_labels')
     = f.input :biography, :input_html => {:rows => 10}
     / = f.input :musician_is_band
 

@@ -7,6 +7,7 @@
     = f.association :band
     = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
     = f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year
+    = f.association :album_labels, :as => :check_boxes, :label => t('album_labels')
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'
