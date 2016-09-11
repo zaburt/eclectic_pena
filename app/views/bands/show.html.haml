@@ -42,7 +42,7 @@
       - @band.band_photos.each do |photo|
         - reveal_id = "image_reveal_#{photo.id}"
         %a{'data-open' => reveal_id}
-          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+          = image_tag photo.image.url(:small), :class => 'thumbnail medium_image', :alt => photo.name, :title => photo.name
         .reveal{:id => reveal_id, 'data-reveal' => ''}
           .text_italic
             = photo.name
@@ -59,12 +59,14 @@
       - @band.band_musicians.each do |band_musician|
         - photo = band_musician.musician.musician_photos.first
         .column
-          - if photo
-            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
-          = link_to band_musician.musician.name, band_musician.musician
-          .text_italic
-            - until_str = band_musician.current ? '' : band_musician.until
-            = "#{band_musician.since} - #{until_str}"
+          .row
+            - if photo
+              = image_tag photo.image.url(:small), :class => 'thumbnail medium_image', :alt => photo.name, :title => photo.name
+          .row
+            = link_to band_musician.musician.name, band_musician.musician
+            .text_italic
+              - until_str = band_musician.current ? '' : band_musician.until
+              = "#{band_musician.since} - #{until_str}"
 
 %fieldset.fieldset
   %legend
@@ -87,11 +89,13 @@
       - @band.albums.order(:date).each do |album|
         - photo = album.album_covers.first
         .column
-          - if photo
-            = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
-          = link_to album.name, album
-          .text_italic
-            = album.date.try(:year)
+          .row
+            - if photo
+              = image_tag photo.image.url(:small), :class => 'thumbnail medium_image', :alt => photo.name, :title => photo.name
+          .row
+            = link_to album.name, album
+            .text_italic
+              = album.date.try(:year)
 
 %fieldset.fieldset
   %legend

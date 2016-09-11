@@ -21,7 +21,7 @@
           %tr
             %td= image_tag musician_photo.image.url(:small), :class => 'small_image'
             %td= musician_photo.name
-            %td= musician_photo.musician.try(:name)
+            %td= link_to musician_photo.musician.try(:name), musician_photo.musician
             %td= link_to t('show'), musician_photo
             %td= link_to t('edit'), edit_musician_photo_path(musician_photo)
             %td= link_to t('delete'), musician_photo, :method => :delete, :data => {:confirm => t('are_you_sure')}

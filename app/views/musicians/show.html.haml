@@ -32,7 +32,7 @@
       - @musician.musician_photos.each do |photo|
         - reveal_id = "image_reveal_#{photo.id}"
         %a{'data-open' => reveal_id}
-          = image_tag photo.image.url(:small), :class => 'thumbnail', :alt => photo.name, :title => photo.name
+          = image_tag photo.image.url(:small), :class => 'thumbnail medium_image', :alt => photo.name, :title => photo.name
         .reveal{:id => reveal_id, 'data-reveal' => ''}
           .text_italic
             = photo.name
