@@ -22,6 +22,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/1/edit
   def edit
+    @edit_labels = params[:edit_labels]
   end
 
   # POST /albums

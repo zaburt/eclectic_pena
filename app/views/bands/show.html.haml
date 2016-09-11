@@ -114,4 +114,6 @@
 .row
   .small-24.columns
     = link_to t('edit'), edit_band_path(@band), :class => 'button'
+    = link_to t('edit_labels'), edit_band_path(@band, :edit_labels => true), :class => 'button'
+    = link_to t('edit_genres'), edit_band_path(@band, :edit_genres => true), :class => 'button'
 

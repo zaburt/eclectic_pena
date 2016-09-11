@@ -101,5 +101,5 @@
 .row
   .small-24.columns
     = link_to t('edit'), edit_album_path(@album), :class => 'button'
-    = link_to t('back'), albums_path, :class => 'button'
+    = link_to t('edit_labels'), edit_album_path(@album, :edit_labels => true), :class => 'button'
 

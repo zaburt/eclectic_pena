@@ -22,6 +22,8 @@ class BandsController < ApplicationController
 
   # GET /bands/1/edit
   def edit
+    @edit_labels = params[:edit_labels]
+    @edit_genres = params[:edit_genres]
   end
 
   # POST /bands

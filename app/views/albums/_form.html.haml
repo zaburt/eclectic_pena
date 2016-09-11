@@ -2,12 +2,14 @@
   = f.error_notification
 
   .form-inputs
-    = f.input :name
-    = f.association :album_type
-    = f.association :band
-    = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
-    = f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year
-    = f.association :album_labels, :as => :check_boxes, :label => t('album_labels')
+    - if @edit_labels
+      = f.association :album_labels, :as => :check_boxes, :label => t('album_labels')
+    - else
+      = f.input :name
+      = f.association :album_type
+      = f.association :band
+      = f.input :date, start_year: Date.today.year - 110, end_year: Date.today.year
+      = f.input :end_date, start_year: Date.today.year - 110, end_year: Date.today.year
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'
