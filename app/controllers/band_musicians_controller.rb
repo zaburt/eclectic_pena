@@ -3,7 +3,9 @@ class BandMusiciansController < ApplicationController
 
   # GET /band_musicians
   def index
-    @band_musicians = BandMusician.all
+    @band_id = params[:band_id]
+    @musician_id = params[:musician_id]
+    @band_musicians = BandMusician.for_band(@band_id).for_musician(@musician_id)
   end
 
   # GET /band_musicians/1

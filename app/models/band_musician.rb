@@ -20,4 +20,14 @@
 class BandMusician < ActiveRecord::Base
   belongs_to :band
   belongs_to :musician
+
+  scope :for_band, ->(band) {
+    where(:band_id => band) if band
+  }
+
+  scope :for_musician, ->(musician) {
+    where(:musician_id => musician) if musician
+  }
+
 end
+

@@ -32,5 +32,9 @@ class BandPhoto < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: %r{\Aimage/.*\Z}
   validates_attachment_file_name :image, matches: [/png\Z/i, /jpe?g\Z/i, /gif\Z/i]
 
+  scope :for_band, ->(band) {
+    where(:band_id => band) if band
+  }
+
 end
 

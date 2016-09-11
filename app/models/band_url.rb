@@ -17,4 +17,10 @@
 
 class BandUrl < ActiveRecord::Base
   belongs_to :band
+
+  scope :for_band, ->(band) {
+    where(:band_id => band) if band
+  }
+
 end
+

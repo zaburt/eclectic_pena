@@ -22,8 +22,8 @@
                 = link_to t('albums'), albums_path
               %li
                 = link_to t('album_comments'), album_comments_path
-              %li
-                = link_to t('album_covers'), album_covers_path
+              /%li
+              /  = link_to t('album_covers'), album_covers_path
               %li
                 = link_to t('album_labels'), album_labels_path
               %li
@@ -32,6 +32,8 @@
                 = link_to t('album_tracks'), album_tracks_path
               %li
                 = link_to t('album_types'), album_types_path
+              %li
+                = link_to t('generic.new_model', :name => Album.model_name.human), new_album_path
           %li
             = link_to t('bands'), bands_path
             %ul.menu
@@ -40,11 +42,13 @@
               %li
                 = link_to t('band_labels'), band_labels_path
               %li
-                = link_to t('band_musicians'), band_musicians_path
-              %li
-                = link_to t('band_photos'), band_photos_path
-              %li
-                = link_to t('band_urls'), band_urls_path
+                = link_to t('generic.new_model', :name => Band.model_name.human), new_band_path
+              /%li
+              /  = link_to t('band_musicians'), band_musicians_path
+              /%li
+              /  = link_to t('band_photos'), band_photos_path
+              /%li
+              /  = link_to t('band_urls'), band_urls_path
           %li
             = link_to t('musicians'), musicians_path
             %ul.menu
@@ -53,7 +57,9 @@
               %li
                 = link_to t('musician_labels'), musician_labels_path
               %li
-                = link_to t('musician_photos'), musician_photos_path
+                = link_to t('generic.new_model', :name => Musician.model_name.human), new_musician_path
+              /%li
+              /  = link_to t('musician_photos'), musician_photos_path
           %li
             = link_to t('genres'), genres_path
           %li

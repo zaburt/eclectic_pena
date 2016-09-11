@@ -28,5 +28,5 @@
 
     %br
 
-    = link_to t('generic.new_model', :name => AlbumCover.model_name.human), new_album_cover_path, :class => 'button'
+    = link_to t('generic.new_model', :name => AlbumCover.model_name.human), new_album_cover_path(:album_id => @album_id), :class => 'button'
 

@@ -9,7 +9,10 @@
 .row
   .small-24.columns
     = link_to t('cancel'), @band, :class => 'button'
+    = link_to t('images'), band_photos_path(:band_id => @band.id), :class => 'button'
+    = link_to t('urls'), band_urls_path(:band_id => @band.id), :class => 'button'
+    = link_to t('labels'), edit_band_path(@band, :edit_labels => true), :class => 'button'
+    = link_to t('genres'), edit_band_path(@band, :edit_genres => true), :class => 'button'
+    = link_to t('musicians'), band_musicians_path(:band_id => @band.id), :class => 'button'
     = link_to t('delete'), @band, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
-    = link_to t('add_image'), new_band_photo_path(:band_id => @band.id), :class => 'button'
-    = link_to t('add_band_url'), new_band_url_path(:band_id => @band.id), :class => 'button'
 

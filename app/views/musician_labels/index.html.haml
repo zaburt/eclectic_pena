@@ -9,17 +9,11 @@
         %tr
           %th
             = t('activerecord.attributes.musician_label.name')
-          %th
-          %th
-          %th
 
       %tbody
         - @musician_labels.each do |musician_label|
           %tr
-            %td= musician_label.name
-            %td= link_to t('show'), musician_label
-            %td= link_to t('edit'), edit_musician_label_path(musician_label)
-            %td= link_to t('delete'), musician_label, :method => :delete, :data => {:confirm => t('are_you_sure')}
+            %td= link_to musician_label.name, musician_label
 
     %br
 

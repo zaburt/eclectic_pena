@@ -22,15 +22,15 @@
       %tbody
         - @band_urls.each do |band_url|
           %tr
-            %td= band_url.band.name
+            %td= link_to band_url.band.name, band_url.band
             %td= link_to band_url.url
             %td= band_url.description
             %td= band_url.date
             %td= link_to t('show'), band_url
             %td= link_to t('edit'), edit_band_url_path(band_url)
-            %td= link_to t('destroy'), band_url, :method => :delete, :data => {:confirm => t('are_you_sure')}
+            %td= link_to t('delete'), band_url, :method => :delete, :data => {:confirm => t('are_you_sure')}
 
     %br
 
-    = link_to t('generic.new_model', :name => BandUrl.model_name.human), new_band_url_path, :class => 'button'
+    = link_to t('generic.new_model', :name => BandUrl.model_name.human), new_band_url_path(:band_id => @band_id), :class => 'button'
 

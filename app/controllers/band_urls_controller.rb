@@ -3,7 +3,8 @@ class BandUrlsController < ApplicationController
 
   # GET /band_urls
   def index
-    @band_urls = BandUrl.all
+    @band_id = params[:band_id]
+    @band_urls = BandUrl.for_band(@band_id)
   end
 
   # GET /band_urls/1

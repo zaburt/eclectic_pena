@@ -28,5 +28,5 @@
 
     %br
 
-    = link_to t('generic.new_model', :name => MusicianPhoto.model_name.human), new_musician_photo_path, :class => 'button'
+    = link_to t('generic.new_model', :name => MusicianPhoto.model_name.human), new_musician_photo_path(:musician_id => @musician_id), :class => 'button'
 

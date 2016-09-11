@@ -3,7 +3,8 @@ class BandPhotosController < ApplicationController
 
   # GET /band_photos
   def index
-    @band_photos = BandPhoto.all
+    @band_id = params[:band_id]
+    @band_photos = BandPhoto.for_band(@band_id)
   end
 
   # GET /band_photos/1

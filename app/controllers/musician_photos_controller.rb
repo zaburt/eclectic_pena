@@ -3,7 +3,8 @@ class MusicianPhotosController < ApplicationController
 
   # GET /musician_photos
   def index
-    @musician_photos = MusicianPhoto.all
+    @musician_id = params[:musician_id]
+    @musician_photos = MusicianPhoto.for_musician(@musician_id)
   end
 
   # GET /musician_photos/1

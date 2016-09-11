@@ -3,7 +3,8 @@ class AlbumCoversController < ApplicationController
 
   # GET /album_covers
   def index
-    @album_covers = AlbumCover.all
+    @album_id = params[:album_id]
+    @album_covers = AlbumCover.for_album(@album_id)
   end
 
   # GET /album_covers/1
@@ -12,6 +13,7 @@ class AlbumCoversController < ApplicationController
 
   # GET /album_covers/new
   def new
+    @album_id = params[:album_id]
     @album_cover = AlbumCover.new
   end
 
