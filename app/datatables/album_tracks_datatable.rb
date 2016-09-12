@@ -5,7 +5,8 @@ class AlbumTracksDatatable < ServerSideDatatables
   private
 
   def filtered_list
-    @klass.includes(:album).all
+    @album_id = view_variable('@album_id')
+    @klass.includes(:album).for_album(@album_id)
   end
 
   def data
@@ -15,7 +16,7 @@ class AlbumTracksDatatable < ServerSideDatatables
         link_to(album_track.album.name, album_track.album),
         album_track.tracks,
         link_to(t('edit'), edit_album_track_path(album_track)),
-        link_to(t('destroy'), album_track, :method => :delete, :data => {:confirm => t('are_you_sure')})
+        link_to(t('delete'), album_track, :method => :delete, :data => {:confirm => t('are_you_sure')})
       ]
     end
   end

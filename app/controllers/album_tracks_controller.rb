@@ -3,7 +3,7 @@ class AlbumTracksController < ApplicationController
 
   # GET /album_tracks
   def index
-    # @album_tracks = AlbumTrack.all
+    @album_id = params[:album_id]
 
     respond_to do |format|
       format.html

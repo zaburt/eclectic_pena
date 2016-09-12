@@ -29,6 +29,10 @@ class ServerSideDatatables
     }
   end
 
+  def view_variable(varname)
+    @view.instance_variable_get(varname)
+  end
+
   private
 
   # singleton

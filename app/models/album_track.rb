@@ -16,4 +16,9 @@
 
 class AlbumTrack < ActiveRecord::Base
   belongs_to :album
+
+  scope :for_album, ->(album) {
+    where(:album_id => album) if album
+  }
+
 end

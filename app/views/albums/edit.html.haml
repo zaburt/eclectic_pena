@@ -11,5 +11,6 @@
     = link_to t('cancel'), @album, :class => 'button'
     = link_to t('images'), album_covers_path(:album_id => @album.id), :class => 'button'
     = link_to t('labels'), edit_album_path(@album, :edit_labels => true), :class => 'button'
+    = link_to t('tracks'), album_tracks_path(:album_id => @album.id), :class => 'button'
     = link_to t('delete'), @album, :method => :delete, :data => {:confirm => t('are_you_sure')}, :class => 'button'
 

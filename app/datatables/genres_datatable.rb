@@ -9,7 +9,7 @@ class GenresDatatable < ServerSideDatatables
       [
         link_to(genre.name, genre),
         link_to(t('edit'), edit_genre_path(genre)),
-        link_to(t('destroy'), genre, :method => :delete, :data => {:confirm => t('are_you_sure')})
+        link_to(t('delete'), genre, :method => :delete, :data => {:confirm => t('are_you_sure')})
       ]
     end
   end

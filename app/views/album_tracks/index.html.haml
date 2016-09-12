@@ -4,7 +4,7 @@
 
 .row
   .small-24.columns
-    %table#albums_tracks_table.serverside_datatables{'data-source' => album_tracks_path}
+    %table#albums_tracks_table.serverside_datatables{'data-source' => album_tracks_path(:album_id => @album_id)}
       %thead
         %tr
           %th
