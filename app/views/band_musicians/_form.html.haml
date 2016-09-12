@@ -2,8 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.association :band
-    = f.association :musician
+    = f.association :band, :selected => @band_id
+    = f.association :musician, :selected => @musician_id
     = f.input :since, start_year: Date.today.year - 110, end_year: Date.today.year
     = f.input :until, start_year: Date.today.year - 110, end_year: Date.today.year
     = f.input :current

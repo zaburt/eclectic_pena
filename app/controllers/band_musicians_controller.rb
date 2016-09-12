@@ -14,6 +14,8 @@ class BandMusiciansController < ApplicationController
 
   # GET /band_musicians/new
   def new
+    @band_id = params[:band_id]
+    @musician_id = params[:musician_id]
     @band_musician = BandMusician.new
   end
 
