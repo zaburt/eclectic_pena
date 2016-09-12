@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name
     = f.association :album
-    = f.input :tracks
+    = f.input :tracks, :as => :text, :input_html => {:rows => 10}
 
   .form-actions.float-right
     = f.button :submit, :class => 'button'
