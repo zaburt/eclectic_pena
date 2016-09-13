@@ -1,33 +1,38 @@
 .row
   .small-24.columns.page_top
     = @musician.name
-.row
-  .small-8.columns
-    = t('activerecord.attributes.musician.birthdate')
-  .small-16.columns
-    = @musician.birthdate
-.row
-  .small-8.columns
-    = t('activerecord.attributes.musician.country')
-  .small-16.columns
-    = @musician.country_name
-.row
-  .small-8.columns
-    = t('activerecord.attributes.musician.website')
-  .small-16.columns
-    - if @musician.website
+
+- if @musician.birthdate.present?
+  .row
+    .small-8.columns
+      = t('activerecord.attributes.musician.birthdate')
+    .small-16.columns
+      = @musician.birthdate
+- if @musician.country_name.present?
+  .row
+    .small-8.columns
+      = t('activerecord.attributes.musician.country')
+    .small-16.columns
+      = @musician.country_name
+- if @musician.website.present?
+  .row
+    .small-8.columns
+      = t('activerecord.attributes.musician.website')
+    .small-16.columns
       = link_to @musician.website
-.row
-  .small-8.columns
-    = t('activerecord.attributes.musician.musician_labels')
-  .small-16.columns
-    = @musician.musician_labels.pluck(:name).join(', ')
-.row
-  .small-8.columns
-    = t('activerecord.attributes.musician.biography')
-  .small-16.columns.small-offset-1
-    %article
-      = simple_format(@musician.biography, {}, :sanitize => false)
+- if @musician.musician_labels.present?
+  .row
+    .small-8.columns
+      = t('activerecord.attributes.musician.musician_labels')
+    .small-16.columns
+      = @musician.musician_labels.pluck(:name).join(', ')
+- if @musician.biography.present?
+  .row
+    .small-8.columns
+      = t('activerecord.attributes.musician.biography')
+    .small-16.columns.small-offset-1
+      %article
+        = simple_format(@musician.biography, {}, :sanitize => false)
 
 %fieldset.fieldset
   %legend
