@@ -29,6 +29,9 @@ module ApplicationHelper
     tags.map{|k| "##{k}"}.join(' ')
   end
 
+  def default_date
+    Date.new(1970, 1, 1)
+  end
 
 end
 

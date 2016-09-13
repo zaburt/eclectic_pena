@@ -6,7 +6,7 @@
       = f.association :musician_labels, :as => :check_boxes, :label => t('musician_labels')
     - else
       = f.input :name
-      = f.input :birthdate, start_year: Date.today.year - 110, end_year: Date.today.year
+      = f.input :birthdate, start_year: Date.today.year - 110, end_year: Date.today.year, :default => default_date
       = f.input :country
       = f.input :website
       = f.input :biography, :input_html => {:rows => 10}
