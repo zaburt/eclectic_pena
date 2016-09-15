@@ -46,13 +46,16 @@ class AlbumCommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album_comment
-      @album_comment = AlbumComment.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_comment_params
-      params.require(:album_comment).permit(:album_id, :user_id, :publish, :comment)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album_comment
+    @album_comment = AlbumComment.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def album_comment_params
+    params.require(:album_comment).permit(:album_id, :user_id, :publish, :comment)
+  end
+
 end
+

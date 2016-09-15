@@ -48,13 +48,16 @@ class AlbumCoversController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album_cover
-      @album_cover = AlbumCover.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_cover_params
-      params.require(:album_cover).permit(:name, :album_id, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album_cover
+    @album_cover = AlbumCover.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def album_cover_params
+    params.require(:album_cover).permit(:name, :album_id, :image)
+  end
+
 end
+

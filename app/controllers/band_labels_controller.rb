@@ -46,13 +46,16 @@ class BandLabelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band_label
-      @band_label = BandLabel.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_label_params
-      params.require(:band_label).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band_label
+    @band_label = BandLabel.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_label_params
+    params.require(:band_label).permit(:name)
+  end
+
 end
+

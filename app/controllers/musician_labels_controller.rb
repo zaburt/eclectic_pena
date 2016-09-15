@@ -47,13 +47,16 @@ class MusicianLabelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_musician_label
-      @musician_label = MusicianLabel.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def musician_label_params
-      params.require(:musician_label).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_musician_label
+    @musician_label = MusicianLabel.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def musician_label_params
+    params.require(:musician_label).permit(:name)
+  end
+
 end
+

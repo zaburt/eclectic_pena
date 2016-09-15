@@ -53,14 +53,17 @@ class BandsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band
-      @band = Band.friendly.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_params
-      params.require(:band).permit(:name, :country, :website, :biography, :musician_is_band,
-                                   :band_label_ids => [], :genre_ids => [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band
+    @band = Band.friendly.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_params
+    params.require(:band).permit(:name, :country, :website, :biography, :musician_is_band,
+                                 :band_label_ids => [], :genre_ids => [])
+  end
+
 end
+

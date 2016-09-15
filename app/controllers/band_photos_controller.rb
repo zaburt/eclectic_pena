@@ -48,13 +48,16 @@ class BandPhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band_photo
-      @band_photo = BandPhoto.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_photo_params
-      params.require(:band_photo).permit(:name, :band_id, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band_photo
+    @band_photo = BandPhoto.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_photo_params
+    params.require(:band_photo).permit(:name, :band_id, :image)
+  end
+
 end
+

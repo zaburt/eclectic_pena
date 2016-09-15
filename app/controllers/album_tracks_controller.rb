@@ -51,13 +51,16 @@ class AlbumTracksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album_track
-      @album_track = AlbumTrack.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def album_track_params
-      params.require(:album_track).permit(:name, :album_id, :tracks)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album_track
+    @album_track = AlbumTrack.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def album_track_params
+    params.require(:album_track).permit(:name, :album_id, :tracks)
+  end
+
 end
+

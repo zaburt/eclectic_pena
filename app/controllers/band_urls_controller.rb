@@ -48,13 +48,16 @@ class BandUrlsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_band_url
-      @band_url = BandUrl.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def band_url_params
-      params.require(:band_url).permit(:url, :band_id, :description, :date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_band_url
+    @band_url = BandUrl.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def band_url_params
+    params.require(:band_url).permit(:url, :band_id, :description, :date)
+  end
+
 end
+

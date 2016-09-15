@@ -48,13 +48,16 @@ class MusicianPhotosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_musician_photo
-      @musician_photo = MusicianPhoto.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def musician_photo_params
-      params.require(:musician_photo).permit(:name, :musician_id, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_musician_photo
+    @musician_photo = MusicianPhoto.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def musician_photo_params
+    params.require(:musician_photo).permit(:name, :musician_id, :image)
+  end
+
 end
+
