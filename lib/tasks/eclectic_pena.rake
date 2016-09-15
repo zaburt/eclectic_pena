@@ -22,7 +22,6 @@ namespace :eclectic_pena do
       all_artists = []
       all_genres = []
       all_albums = {}
-      all_tracks = {}
 
       Zip::File.open(filepath) do |z|
         entry = z.get_entry('tellico.xml')
@@ -61,32 +60,32 @@ namespace :eclectic_pena do
           tracks: tracks
         }
 
-        if display_parse_results
-          puts
-          puts "############################# #{id} ###########################"
-          puts " title: #{title}"
-          puts " year: #{year}"
+        next unless display_parse_results
 
-          puts " artists:"
-          artists.each do |artist|
-            puts "   #{artist}"
-          end
+        puts
+        puts "############################# #{id} ###########################"
+        puts " title: #{title}"
+        puts " year: #{year}"
 
-          puts " genres:"
-          genres.each do |genre|
-            puts "   #{genre}"
-          end
-
-          puts " comments: #{comments}"
-          puts
-
-          puts " tracks:"
-          tracks.each do |track|
-            pp track
-          end
-
-          puts
+        puts ' artists:'
+        artists.each do |artist|
+          puts "   #{artist}"
         end
+
+        puts ' genres:'
+        genres.each do |genre|
+          puts "   #{genre}"
+        end
+
+        puts " comments: #{comments}"
+        puts
+
+        puts ' tracks:'
+        tracks.each do |track|
+          pp track
+        end
+
+        puts
       end
 
       all_artists.uniq!.sort!
@@ -114,7 +113,7 @@ namespace :eclectic_pena do
           :date => "#{data[:year]}-01-01"
         }
 
-        album_args.merge!(:band_id => band_id) if band_id.present?
+        album_args[:band_id] = band_id if band_id.present?
         album = Album.create(album_args)
 
         data[:genres].each do |genre|
@@ -129,18 +128,18 @@ namespace :eclectic_pena do
       return str if str.blank?
 
       str.gsub(/Avantgarde/, 'Avant Garde')
-      .gsub(/Bluesrock/, 'Blues Rock')
-      .gsub(/Folkrock/, 'Folk Rock')
-      .gsub(/Hardrock/, 'Hard Rock')
-      .gsub(/ProgRock/, 'Progressive Rock')
-      .gsub(/Prog Rock/, 'Progressive Rock')
-      .gsub(/Psychedelia/, 'Psychedelic')
-      .gsub(/Psychedelic Roc/, 'Psychedelic Rock')
-      .gsub(/Psychrock/, 'Psychedelic Rock')
-      .gsub(/Psych Rock/, 'Psychedelic Rock')
-      .gsub(/Psyche Folk/, 'Psychedelic Folk')
-      .gsub(/Psych-Funk/, 'Psychedelic Funk')
-      .gsub(/[\/-]/, ' ')
+         .gsub(/Bluesrock/, 'Blues Rock')
+         .gsub(/Folkrock/, 'Folk Rock')
+         .gsub(/Hardrock/, 'Hard Rock')
+         .gsub(/ProgRock/, 'Progressive Rock')
+         .gsub(/Prog Rock/, 'Progressive Rock')
+         .gsub(/Psychedelia/, 'Psychedelic')
+         .gsub(/Psychedelic Roc/, 'Psychedelic Rock')
+         .gsub(/Psychrock/, 'Psychedelic Rock')
+         .gsub(/Psych Rock/, 'Psychedelic Rock')
+         .gsub(/Psyche Folk/, 'Psychedelic Folk')
+         .gsub(/Psych-Funk/, 'Psychedelic Funk')
+         .gsub(/[\/-]/, ' ')
     end
   end
 end

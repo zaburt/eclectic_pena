@@ -37,8 +37,8 @@ class Band < ActiveRecord::Base
 
 
   def related_bands
-    Band.joins(:band_musicians).where('bands.id != ?', id).
-      where('band_musicians.musician_id' => musician_ids).uniq
+    Band.joins(:band_musicians).where('bands.id != ?', id)
+        .where('band_musicians.musician_id' => musician_ids).uniq
   end
 
   # force friendly_id to update slug

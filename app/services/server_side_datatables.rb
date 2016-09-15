@@ -1,4 +1,6 @@
 # super class for server side datatables
+# frozen_string_literal: true
+
 class ServerSideDatatables
   delegate :params, :h, :t, :raw, :link_to, :number_to_currency, :format_time, :to => :@view
 
@@ -12,7 +14,7 @@ class ServerSideDatatables
   DEFAULT_LENGTH = 20
   SEARCH_DELIMITER = ' '
 
-  def initialize(klass,view)
+  def initialize(klass, view)
     @klass = klass
     @view = view
     # params.keys.sort.each do |k|
@@ -20,7 +22,7 @@ class ServerSideDatatables
     # end
   end
 
-  def as_json(options = {})
+  def as_json(_options = {})
     {
       PINGBACK => params[PINGBACK].to_i,
       :recordsTotal => @klass.count,
@@ -63,7 +65,7 @@ class ServerSideDatatables
     @klass.all
   end
 
-  def selected_columns items
+  def selected_columns(items)
     items
   end
 
@@ -72,13 +74,13 @@ class ServerSideDatatables
     terms = {}
     current_ix = -1
 
-    criteria = search_for.inject([]) do |criteria, atom|
+    criteria_search_for = search_for.inject([]) do |criteria, atom|
       current_ix += 1
       terms["search#{current_ix}".to_sym] = "%#{atom}%"
       criteria << "(#{search_columns.map{|col| "#{col} ILIKE :search#{current_ix}"}.join(OR_STR)})"
     end.join(AND_STR)
 
-    [criteria, terms]
+    [criteria_search_for, terms]
   end
 
   def page
@@ -86,7 +88,7 @@ class ServerSideDatatables
   end
 
   def per_page
-    params[:length].to_i > 0 ? params[:length].to_i : DEFAULT_LENGTH
+    params[:length].to_i.positive? ? params[:length].to_i : DEFAULT_LENGTH
   end
 
   # TODO: enable multicolumn order and use columns other than 0
