@@ -3,14 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :set_locale
-  before_filter :set_time_zone
-  before_filter :set_dynamic_hosts
-  before_filter :set_paper_trail_whodunnit
-  # before_filter :set_pagination
-  # before_filter :authenticate_user!
+  before_action :set_locale
+  before_action :set_time_zone
+  before_action :set_dynamic_hosts
+  before_action :set_paper_trail_whodunnit
+  # before_action :set_pagination
+  # before_action :authenticate_user!
 
-  # skip_around_filter :set_locale_from_url
   # skip_around_action :set_locale_from_url
 
 
