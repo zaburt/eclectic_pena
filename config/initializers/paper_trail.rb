@@ -7,5 +7,6 @@ module PaperTrail
   end
 end
 
-PaperTrail.config.track_associations = false
+# separated to another gem
+# PaperTrail.config.track_associations = false
 
